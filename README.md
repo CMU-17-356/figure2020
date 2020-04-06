@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/CMU-17-356/dronuts2020-team-d.svg?token=GCxhxHvgRUSPSAmJy4Ff&branch=master)](https://travis-ci.com/CMU-17-356/dronuts2020-team-d)
+[![Build Status](https://travis-ci.com/dkim1546/figure2020.svg?branch=master)](https://travis-ci.com/dkim1546/figure2020)
 
 # Figure 2020
 17-356 Final Project
@@ -14,7 +14,7 @@ To start up the application locally, first run `npm install` then `npm start` wi
 To run tests locally first run `npm install` then `npm test` within the server directory.
 
 ### QA Tools List
-* Continuous Integration: [Travis-CI](https://travis-ci.com/CMU-17-356/dronuts2020-team-d)
+* Continuous Integration: [Travis-CI](https://travis-ci.com/github/dkim1546/figure2020)
 * Web Framework: [Express](https://expressjs.com/)
 * Linter: [eslint](https://eslint.org/docs/user-guide/getting-started)
 * Dependency Updater: [npm-check](https://www.npmjs.com/package/npm-check)

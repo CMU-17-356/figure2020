@@ -1,0 +1,20 @@
+{
+  "name": "figure2020",
+  "version": "1.0.0",
+  "description": "17-356 Final Project for Figure Group",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --passWithNoTests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dkim1546/figure2020.git"
+  },
+  "author": "Vrinda Gupta, Daniel Kim, Sankalp Patro, Jeff Xu, Tianyi Zhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dkim1546/figure2020/issues"
+  },
+  "homepage": "https://github.com/dkim1546/figure2020#readme"
+}
