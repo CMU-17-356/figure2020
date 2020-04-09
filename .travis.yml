@@ -12,11 +12,7 @@ env:
     - DOCKER_HOST="tcp://13.93.200.96:2376"
     - DOCKER_CERT_PATH="$TRAVIS_BUILD_DIR/azure"
     - DOCKER_MACHINE_NAME="figure2020"
-
-install:
-  - cd server && npm install && cd ..
-  - cd client && npm install && cd ..
-  - npm install
+    - COMPOSE_TLS_VERSION=TLSv1_2
 
 script:
   - cd ./server && npm install
