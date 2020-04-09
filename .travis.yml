@@ -13,8 +13,11 @@ env:
     - DOCKER_CERT_PATH="$TRAVIS_BUILD_DIR/azure"
     - DOCKER_MACHINE_NAME="figure2020"
 
+install:
+  - cd server && npm install && cd ..
+  - cd client && npm install && cd ..
+
 script:
-  - npm install
   - npm test
   - docker-compose build
 
