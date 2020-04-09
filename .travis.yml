@@ -19,12 +19,15 @@ install:
   - npm install
 
 script:
-  - npm test
-  - docker-compose build
+  - cd ./server && npm install
+  - cd ..
+  - docker-compose --file docker-compose.prod.yml build
+  - cd ./server && npm test
+  - cd ..
 
 deploy:
   skip_cleanup: true
   provider: script
-  script: docker-compose up -d --remove-orphans
+  script: docker-compose --file docker-compose.prod.yml up -d --remove-orphans
   on:
     branch: master
