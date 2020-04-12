@@ -5,6 +5,9 @@ node_modules/
 # webstorm files
 .idea
 
+# icloud backup files
+*.icloud
+
 # editor backup files
 *~
 *#

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Change from './components/change/change.js';
+import Create from './components/create/create.js';
 import Response from './components/response/response.js';
 import Questions from './components/questions/questions.js';
 import SignupLogin from './components/signupLogin/signupLogin.js';
@@ -31,9 +31,9 @@ const App = () => {
 		);
 	};
 
-	const changePage = (props) => {
+	const createPage = (props) => {
 		return (
-			<Change/>
+			<Create/>
 		);
 	};
 
@@ -42,7 +42,8 @@ const App = () => {
 			<SignupLogin
 				login={login}
 				logout={logout}
-				user={value}/>
+				user={value}
+			/>
 		);
 	};
 
@@ -61,7 +62,7 @@ const App = () => {
 					</div>
 					<Route path="/" exact strict render={questionsPage}/>
 					<Route path="/questions" exact strict render={questionsPage}/>
-					<Route path="/changePage" exact strict render={changePage}/>
+					<Route path="/createPage" exact strict render={createPage}/>
 					<Route path="/signupLogin" exact strict render={signupLogin}/>
 					<Route path="/responsePage" exact strict render={responsePage}/>
 				</div>
