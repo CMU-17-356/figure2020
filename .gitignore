@@ -6,7 +6,7 @@ node_modules/
 .idea
 
 # icloud backup files
-.icloud
+*.icloud
 
 # editor backup files
 *~

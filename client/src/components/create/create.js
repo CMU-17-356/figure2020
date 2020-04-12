@@ -95,7 +95,7 @@ export class Create extends Component {
                   type="submit"
                   onSubmit={this.handleSubmit}
                 >
-                  Save All
+                  Submit
                 </Button>
               </div>
             </form>
