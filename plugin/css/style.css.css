@@ -1,0 +1,9 @@
+button {
+  height: 30px;
+  width: 30px;
+  outline: none;
+  background-color: black;
+}
+h1 {
+  color: purple;
+}
