@@ -53,7 +53,7 @@ const App = () => {
 				<div className="App">
 					<div>
 						<Navbar>
-							 <Navbar.Brand href="/">logo</Navbar.Brand>
+							 <Navbar.Brand href="/">FiGuRe</Navbar.Brand>
 								<Navbar.Collapse className="justify-content-end">
 									<Navbar.Text>
 									</Navbar.Text>
@@ -62,9 +62,9 @@ const App = () => {
 					</div>
 					<Route path="/" exact strict render={questionsPage}/>
 					<Route path="/questions" exact strict render={questionsPage}/>
-					<Route path="/createPage" exact strict render={createPage}/>
-					<Route path="/signupLogin" exact strict render={signupLogin}/>
-					<Route path="/responsePage" exact strict render={responsePage}/>
+					<Route path="/create" exact strict render={createPage}/>
+					<Route path="/login" exact strict render={signupLogin}/>
+					<Route path="/response" exact strict render={responsePage}/>
 				</div>
 			</Router>
 		</div>

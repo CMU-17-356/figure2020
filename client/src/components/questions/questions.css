@@ -1,31 +1,17 @@
-.container {
-	padding-top: 10px;
-	padding-bottom: 20px;
-	width: 100%;
+#contain {
+	margin-top: 30px;
+	margin-bottom: 100px;
 }
 
-.table-header {
-    background-color: whitesmoke;
+#questions {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+
 }
 
-.table {
-    border: darkgrey;
-		table-layout: fixed;
-    width: 100%;
-}
-
-.pagination {
-    justify-content: flex-end;
-}
-
-.react-bootstrap-table-pagination {
-    text-align: justify;
-}
-
-.text-center {
-	width: 100%;
-	margin: 30px;
-	border-style: solid;
-	borderWidth: 15px;
-	borderColor: #FFF4F9;
+.cards:hover {
+  background-color: rgba(0,0,0,.35);
+  border-radius: 15px;
 }

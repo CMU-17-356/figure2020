@@ -41,10 +41,15 @@ export class Create extends Component {
 
   render() {
     return (
-      <div className="container my-4 text-left">
-        <h1>Enter Question</h1>
-        <Card>
-          <Card.Body>
+      <div className="container" style={{"margin-top":"60px"}}>
+      <div style={{"display": "flex", "flex-direction":"row", "justify-content":"center"}}>
+      <Card style={{"width":"400px","background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
+      <Card.Body><h1>Enter Question</h1></Card.Body>
+      </Card></div>
+      <br></br>
+      <div className="c my-4 text-left">
+        <Card style={{"background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
+          <Card.Body >
             <form onSubmit={this.handleSubmit}>
               <label>Question:</label>
               <input
@@ -101,7 +106,7 @@ export class Create extends Component {
             </form>
           </Card.Body>
         </Card>
-      </div>
+      </div></div>
     );
   }
 }
