@@ -41,7 +41,7 @@ describe('choice', function() {
     var c = new Choice({});
   	c.validate(function(err) {
     	expect(err.errors.body).to.exist;
-      expect(err.errors.number_of_responses).to.esxist;
+      expect(err.errors.number_of_responses).to.exist;
       done();
     });
   });
