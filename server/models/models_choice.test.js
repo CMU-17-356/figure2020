@@ -12,7 +12,7 @@ var Choice = models.Choice;
 // Checks that a valid Choice object has no errors
 describe('choice', function() {
   it('should be valid if no required fields are left empty', function(done) {
-  	var c = new Choice({body: "Answer 1", number_of_responses: 0});
+  	var c = new Choice({body: "Choice 1", number_of_responses: 0});
   	c.validate(function(err) {
   		expect(err).to.not.exist;
   		done();
@@ -31,7 +31,7 @@ describe('choice', function() {
     });
 
     // Checks that an empty number_of_responses field creates an error
-    var c = new Choice({body: "Answer 1"});
+    var c = new Choice({body: "Choice 1"});
   	c.validate(function(err) {
       expect(err.errors.number_of_responses).to.exist;
       done();
