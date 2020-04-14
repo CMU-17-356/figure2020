@@ -13,10 +13,12 @@ var Question = models.Question;
 // Checks that a valid Question object has no errors
 describe('question', function() {
   it('should be valid if no required fields are left empty', function(done) {
+    // several valid choice objects to be used for creating a question
   	var c0 = new Choice({body: "Choice 0", number_of_responses: 0});
     var c1 = new Choice({body: "Choice 1", number_of_responses: 0});
     var c2 = new Choice({body: "Choice 2", number_of_responses: 0});
-  	var q = new Question({body: "Select one of the choices below", date_asked: , choices: ""});
+
+  	var q = new Question({body: "Select one of the choices below", date_asked: Date(), choices: [{choice: c0.id}, {choice: c1.id}, {choice: c2.id}]});
   	q.validate(function(err) {
   		expect(err).to.not.exist;
   		done();
@@ -25,69 +27,40 @@ describe('question', function() {
 });
 
 // Checks that empty required fields create an error
-describe('donut', function() {
+describe('question', function() {
   it('should be invalid if a required field is left empty', function(done) {
-    // Checks that an empty name field creates an error
-    var d = new Donut({calories: 200, price: 4.42, quantity: 300, photo: "path/to/photo/chocolate_sprinkles.png", description: "Chocolate donut with sprinkles"});
-    d.validate(function(err) {
-      expect(err.errors.name).to.exist;
+    // several valid choice objects to be used for creating a question
+    var c0 = new Choice({body: "Choice 0", number_of_responses: 0});
+    var c1 = new Choice({body: "Choice 1", number_of_responses: 0});
+    var c2 = new Choice({body: "Choice 2", number_of_responses: 0});
+
+    // Checks that an empty body field creates an error
+    var q = new Question({date_asked: Date(), choices: [{choice: c0.id}, {choice: c1.id}, {choice: c2.id}]});
+  	q.validate(function(err) {
+      expect(err.errors.body).to.exist;
       done();
     });
 
-    // Checks that an empty price field creates an error
-    d = new Donut({name: "Chocolate Sprinkles", calories: 200, quantity: 300, photo: "path/to/photo/chocolate_sprinkles.png", description: "Chocolate donut with sprinkles"});
-    d.validate(function(err) {
-      expect(err.errors.price).to.exist;
+    // Checks that an empty date_asked field creates an error
+    q = new Question({body: "Select one of the choices below", choices: [{choice: c0.id}, {choice: c1.id}, {choice: c2.id}]});
+  	q.validate(function(err) {
+      expect(err.errors.date_asked).to.exist;
       done();
     });
 
-    // Checks that an empty available field creates an error
-    d = new Donut({name: "Chocolate Sprinkles", calories: 200, price: 4.42, photo: "path/to/photo/chocolate_sprinkles.png", description: "Chocolate donut with sprinkles"});
-    d.validate(function(err) {
-      expect(err.errors.quantity).to.exist;
-      done();
-    });
+    // // Checks that an empty choices field creates an error
+    // q = new Question({body: "Select one of the choices below", date_asked: Date()});
+  	// q.validate(function(err) {
+    //   expect(err.errors.choices).to.exist;
+    //   done();
+    // });
 
     // Checks that all empty required fields create an error
-    d = new Donut({});
-    d.validate(function(err) {
-    	expect(err.errors.name).to.exist;
-      expect(err.errors.price).to.exist;
-      expect(err.errors.quantity).to.exist;
-      // expect(err.errors.store).to.exist;
-      done();
-    });
-  });
-});
-
-// Checks that all non-required fields can be empty
-describe('donut', function() {
-  it('should be valid if a non-required field is left empty', function(done) {
-    // Checks that an empty calories field does not create an error
-    var d = new Donut({name: "Chocolate Sprinkles", price: 4.42, quantity: 300, photo: "path/to/photo/chocolate_sprinkles.png", description: "Chocolate donut with sprinkles"});
-    d.validate(function(err) {
-      expect(err).to.not.exist;
-      done();
-    });
-
-    // Checks that an empty photo field does not create an error
-    d = new Donut({name: "Chocolate Sprinkles", calories: 200, price: 4.42, quantity: 300, description: "Chocolate donut with sprinkles"});
-    d.validate(function(err) {
-      expect(err).to.not.exist;
-      done();
-    });
-
-    // Checks that an empty description field does not create an error
-    d = new Donut({name: "Chocolate Sprinkles", calories: 200, price: 4.42, quantity: 300, photo: "path/to/photo/chocolate_sprinkles.png"});
-    d.validate(function(err) {
-      expect(err).to.not.exist;
-      done();
-    });
-
-    // Checks that all empty non-required fields do not create an error
-    d = new Donut({name: "Chocolate Sprinkles", price: 4.42, quantity: 300});
-    d.validate(function(err) {
-      expect(err).to.not.exist;
+    q = new Question({});
+    q.validate(function(err) {
+    	expect(err.errors.body).to.exist;
+      expect(err.errors.date_asked).to.exist;
+      // expect(err.errors.choices).to.exist;
       done();
     });
   });

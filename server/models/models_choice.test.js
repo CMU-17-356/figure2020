@@ -31,14 +31,14 @@ describe('choice', function() {
     });
 
     // Checks that an empty number_of_responses field creates an error
-    var c = new Choice({body: "Choice 1"});
+    c = new Choice({body: "Choice 1"});
   	c.validate(function(err) {
       expect(err.errors.number_of_responses).to.exist;
       done();
     });
 
     // Checks that all empty required fields create an error
-    var c = new Choice({});
+    c = new Choice({});
   	c.validate(function(err) {
     	expect(err.errors.body).to.exist;
       expect(err.errors.number_of_responses).to.exist;
