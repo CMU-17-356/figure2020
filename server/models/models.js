@@ -18,7 +18,7 @@ const questionSchema = new Schema({
   },
 });
 
-questionSchema.set('toJSON,' {
+questionSchema.set('toJSON,', {
   getters: true,
 });
 
