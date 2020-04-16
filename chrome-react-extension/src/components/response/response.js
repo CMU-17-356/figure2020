@@ -43,7 +43,7 @@ export class Response extends Component {
     return (
       <div id="containResponse" >
         <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flex-direction": "row", "justify-content": "center"}}>
-          Hello, friend! <br></br>
+          Hello, {this.props.name}! <br></br>
         </div>
         <br></br>
         <Card style={{"background-color": "rgba(245, 245, 245, .5)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px", "width": "550px"}}>

@@ -57,7 +57,8 @@ export class Settings extends Component {
   }
 
   saveInformation = () => {
-    return true
+    localStorage.setItem('name', this.state.name);
+    this.props.landingPage();
   }
 }
 

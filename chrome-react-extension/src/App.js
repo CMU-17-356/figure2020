@@ -6,12 +6,13 @@ import Response from './components/response/response.js';
 import Settings from './components/settings/settings.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+var name = localStorage.getItem('name') || "friend"
 
 class App extends Component{
   constructor() {
     super();
     this.state = {
-      page: "settings"
+      page: "ask"
     }
   }
 
@@ -20,13 +21,14 @@ class App extends Component{
     let page = null
     switch (this.state.page) {
       case 'ask':
-        page = <Ask switchPage={this.switchPage}/>
+        page = <Ask switchPage={this.switchPage} name={name}/>
         break
       case 'response':
-        page = <Response />
+        page = <Response 
+                name={name}/>
         break
       case 'settings':
-        page = <Settings saveInformation={this.saveInformation}/>
+        page = <Settings landingPage={this.landingPage}/>
         break
       }
     return page
@@ -36,20 +38,14 @@ class App extends Component{
     this.setState({
       page: "response"
     });
-    this.forceUpdate();
   };
 
-  changeSettings = () => {
+  landingPage = () => {
     this.setState({
-      page: "settings"
+      page: "ask"
     });
-    this.forceUpdate();
+    name = localStorage.getItem('name') || "friend"
   };
-
-  saveInformation = () => {
-    return true
-  }
-
 
 
 }
