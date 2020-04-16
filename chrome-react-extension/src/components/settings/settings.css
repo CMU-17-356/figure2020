@@ -1,0 +1,18 @@
+input {
+	text-align: center;
+	border-radius: 15px;
+  	background-color: rgba(0,0,0,.4);
+  	color: white;
+  	border-color: white;
+}
+
+select {
+	text-align: center;
+	border-radius: 15px;
+  	background-color: rgba(0,0,0,.4);
+  	color: white;
+  	border-color: white;
+}
+
+input:focus { outline:0 !important; }
+select:focus { outline:0 !important; }

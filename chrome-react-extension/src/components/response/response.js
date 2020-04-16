@@ -3,6 +3,8 @@ import {Card} from "react-bootstrap";
 import '../../App.css';
 import './response.css';
 import {Bar} from 'react-chartjs-2';
+import settings from '../../settings.png';
+
 
 
 
@@ -41,6 +43,8 @@ export class Response extends Component {
 
   render() {
     return (
+      <div>
+      <button id="settings" onClick={this.props.settingsPage}><img src={settings} width="40px" height="40px"/></button>
       <div id="containResponse" >
         <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flex-direction": "row", "justify-content": "center"}}>
           Hello, {this.props.name}! <br></br>
@@ -69,7 +73,7 @@ export class Response extends Component {
 
 
         </Card>
-      </div>
+      </div></div>
     )
 
 

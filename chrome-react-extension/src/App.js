@@ -21,11 +21,13 @@ class App extends Component{
     let page = null
     switch (this.state.page) {
       case 'ask':
-        page = <Ask switchPage={this.switchPage} name={name}/>
+        page = <Ask switchPage={this.switchPage} name={name}
+                    settingsPage={this.settingsPage}/>
         break
       case 'response':
         page = <Response 
-                name={name}/>
+                name={name}
+                settingsPage={this.settingsPage}/>
         break
       case 'settings':
         page = <Settings landingPage={this.landingPage}/>
@@ -45,6 +47,12 @@ class App extends Component{
       page: "ask"
     });
     name = localStorage.getItem('name') || "friend"
+  };
+
+  settingsPage = () => {
+    this.setState({
+      page: "settings"
+    });
   };
 
 

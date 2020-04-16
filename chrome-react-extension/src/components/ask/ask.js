@@ -4,6 +4,8 @@ import './ask.css';
 import '../../App.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import settings from '../../settings.png';
+
 
 const CaptionElement = () =>
   <h3 style={{ borderRadius: '0.25em', textAlign: 'center', color: 'purple', border: '1px solid purple', padding: '0.5em' }}>
@@ -40,6 +42,8 @@ export class Ask extends Component {
 
   	}
     return (
+    <div>
+    <button id="settings" onClick={this.props.settingsPage}><img src={settings} width="40px" height="40px"/></button>
     <div id="contain">
     <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flex-direction": "row", "justify-content": "center"}}>
     Hello, {this.props.name}! <br></br>
@@ -54,6 +58,7 @@ export class Ask extends Component {
     {responses}
      </div>
      </Card>
+     </div>
      </div>
     )
   }
