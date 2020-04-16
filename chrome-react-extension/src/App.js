@@ -3,13 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 import Ask from './components/ask/ask.js';
 import Response from './components/response/response.js';
+import Settings from './components/settings/settings.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component{
   constructor() {
     super();
     this.state = {
-      page: "ask"
+      page: "settings"
     }
   }
 
@@ -23,6 +25,9 @@ class App extends Component{
       case 'response':
         page = <Response />
         break
+      case 'settings':
+        page = <Settings saveInformation={this.saveInformation}/>
+        break
       }
     return page
   }
@@ -34,6 +39,16 @@ class App extends Component{
     this.forceUpdate();
   };
 
+  changeSettings = () => {
+    this.setState({
+      page: "settings"
+    });
+    this.forceUpdate();
+  };
+
+  saveInformation = () => {
+    return true
+  }
 
 
 

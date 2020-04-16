@@ -67,7 +67,6 @@ export class Response extends Component {
         />
       </div>
 
-        <hr style={{"position": "relative", "top": "250px", "margin-right":"50px","margin-left":"50px"}}></hr>
 
         </Card>
       </div>
