@@ -57,7 +57,12 @@ export class Response extends Component {
           width={100}
           height={50}
           options={{
-            maintainAspectRatio: true
+            maintainAspectRatio: true,
+            scales: {
+              xAxes: [{
+                gridLines: { display:false },
+              }]
+            }
           }}
         />
       </div>
