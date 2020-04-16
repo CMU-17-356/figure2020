@@ -1,0 +1,22 @@
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "sandbox": {
+    "pages": [
+      "index.html"
+  ]
+  },
+  "permissions": ["management", "https://www.gstatic.com/charts"],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "content_security_policy":
+        "sandbox allow-scripts; script-src 'self' 'unsafe-eval' https://www.gstatic.com/charts/"
+
+
+}
