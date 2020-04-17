@@ -27,7 +27,7 @@ const App = () => {
 
 	const responsePage = (props) => {
 		return (
-			<Response/>
+			<Response {...props}/>
 		);
 	};
 

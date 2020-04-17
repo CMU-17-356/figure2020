@@ -3,7 +3,7 @@ import {Card} from "react-bootstrap";
 import '../../App.css';
 import './response.css';
 import {Bar} from 'react-chartjs-2';
-
+import axios from 'axios';
 
 
 let questionTitle = 'How many hours did you sleep last night?';
@@ -35,17 +35,39 @@ const data = {
 export class Response extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    if (typeof this.props.location.state === 'undefined') {
+      this.state = {
+        question: null,
+        date: null,
+        choices: null
+      }
+    } else {
+      let redirectionId = this.props.location.state.redirectId;
+      this.state = {
+        questionId: redirectionId,
+        question: null,
+        date: null,
+        choices: null
+      };
     }
   }
+
+  componentDidMount() {
+    axios.get('/questions/' + this.state.questionId)
+      .then(res => {
+          const question = res.data;
+          this.setState({question: question.body,
+                         date: question.date_asked,
+                         choices: question.choices
+                          });
+        })
+  };
 
   render() {
     return (
       <div id="containResponse" >
-        <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flex-direction": "row", "justify-content": "center"}}>
-          Hello, friend! <br></br>
-        </div>
-        <br></br>
+        {this.state.question}
+        {this.state.date}
         <Card style={{"background-color": "rgba(245, 245, 245, .5)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px", "width": "550px"}}>
         <div style={{ "font-size": "25px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "text-align": "center"}}>
           <br></br>Hours slept last night

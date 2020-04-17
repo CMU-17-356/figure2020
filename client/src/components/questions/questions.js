@@ -2,7 +2,9 @@ import React, {Component} from "react";
 import { Card } from 'react-bootstrap';
 import './questions.css';
 import '../../App.css';
+import axios from 'axios'
 import BootstrapTable from 'react-bootstrap-table-next';
+import { Link } from "react-router-dom";
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const CaptionElement = () =>
@@ -16,38 +18,16 @@ export class Questions extends Component {
   constructor() {
     super();
 	this.state = {
-      questions: [{"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200},{"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200},{"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200},  ],
-      columns: [
-        {
-          text: 'Question ID',
-          dataField: 'id',
-        },
-        {
-          text: 'Question',
-          dataField: 'body',
-        },
-        {
-          text: 'Date',
-          dataField: 'date',
-        },
-        {
-          text: 'Responses',
-          dataField: 'responses',
-        }
-      ]
-	};
+      questions: null
+  }
+}
+
+  componentDidMount() {
+    axios.get('/questions')
+      .then(res => {
+        const questions = res.data;
+        this.setState({questions: questions});
+      });
   }
 
   render() {
@@ -55,7 +35,11 @@ export class Questions extends Component {
   	for (let i in this.state.questions) {
   		let question = this.state.questions[i];
   		questions.push(
-			<div key={i} className="cards" style={{margin: "12px"}}>
+		
+      <Link style={{"textDecoration": 'none'}} to={{ pathname: '/response',
+          state: {redirectId: question._id}
+      }}>
+      <div key={i} className="cards" style={{margin: "12px"}}>
 	          <Card style={{ width: '19rem', height: '10rem', "background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
 	            <Card.Body style={{color: "black", display: "flex", "flex-direction": "column", "justify-content": "center", "font-weight":"550"}}>
 	              <Card.Text>
@@ -65,6 +49,8 @@ export class Questions extends Component {
 	            </Card.Body>
 	          </Card>
 	        </div>
+      </Link>
+
   		)
 
   	}
