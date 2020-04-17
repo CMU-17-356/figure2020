@@ -2,83 +2,98 @@ import React, {Component} from "react";
 import { Card } from 'react-bootstrap';
 import './questions.css';
 import '../../App.css';
+import Pagination from '../pagination/pagination.js';
+import QuestionCard from '../question/question.js';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
-const CaptionElement = () =>
-  <h3 style={{ borderRadius: '0.25em', textAlign: 'center', color: 'purple', border: '1px solid purple', padding: '0.5em' }}>
-    Questions
-  </h3>;
 /*************************/
 /*  Class Implementation */
 /*************************/
+
 export class Questions extends Component {
-  constructor() {
-    super();
-	this.state = {
-      questions: [{"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200},{"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200},{"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-  					"date": "4/9/20", "responses":200},  ],
-      columns: [
-        {
-          text: 'Question ID',
-          dataField: 'id',
-        },
-        {
-          text: 'Question',
-          dataField: 'body',
-        },
-        {
-          text: 'Date',
-          dataField: 'date',
-        },
-        {
-          text: 'Responses',
-          dataField: 'responses',
-        }
-      ]
-	};
+  state = { allQuestions: [], currentQuestions: [], currentPage: null, totalPages: null }
+
+  componentDidMount() {
+    const { data: allQuestions = [] } = [{"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200},{"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200},{"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, ];
+    this.setState({ allQuestions });
+  }
+
+  onPageChanged = data => {
+    const { allQuestions } = this.state;
+    const { currentPage, totalPages, pageLimit } = data;
+
+    const offset = (currentPage - 1) * pageLimit;
+    const currentQuestions = allQuestions.slice(offset, offset + pageLimit);
+
+    this.setState({ currentPage, currentQuestions, totalPages });
   }
 
   render() {
-  	let questions = []
-  	for (let i in this.state.questions) {
-  		let question = this.state.questions[i];
-  		questions.push(
-			<div key={i} className="cards" style={{margin: "12px"}}>
-	          <Card style={{ width: '19rem', height: '10rem', "background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
-	            <Card.Body style={{color: "black", display: "flex", "flex-direction": "column", "justify-content": "center", "font-weight":"550"}}>
-	              <Card.Text>
-	               {question.body}
-	              </Card.Text>
 
-	            </Card.Body>
-	          </Card>
-	        </div>
-  		)
+    const { allQuestions, currentQuestions, currentPage, totalPages } = this.state;
+    const totalQuestions = allQuestions.length;
 
-  	}
+    if (totalQuestions === 0) return null;
+
+    const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
+
     return (
-    <div id="contain">
-   	<div style={{"font-size": "60px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3"}}>
- 		Search Questions
-     </div>
-     <br></br>
-    <div id="questions">
-    {questions}
-     </div></div>
-    )
+      <div className="container mb-5">
+        <div className="row d-flex flex-row py-5">
+
+          <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
+            <div className="d-flex flex-row align-items-center">
+
+              <h2 className={headerClass}>
+                <strong className="text-secondary">{totalQuestions}</strong> Countries
+              </h2>
+
+              { currentPage && (
+                <span className="current-page d-inline-block h-100 pl-4 text-secondary">
+                  Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
+                </span>
+              ) }
+
+            </div>
+
+            <div className="d-flex flex-row py-4 align-items-center">
+              <Pagination totalRecords={totalQuestions} pageLimit={18} pageNeighbours={1} onPageChanged={this.onPageChanged} />
+            </div>
+          </div>
+
+          { currentQuestions.map(question => <QuestionCard question={question} />) }
+
+        </div>
+      </div>
+    );
+
   }
+
 }
 
 /*************************/
