@@ -29,20 +29,20 @@ questionSchema.set('toJSON,', {
 const choiceSchema = new Schema({
   body: {type: String, required: true},
   responses: {
-    user_info: [{
+    type: [{
       gender: {
         type: String,
         // enum: ['', ''], //Add later when needed
-        required: true
+        required: false
       },
       age: {
         type: Number,
-        required: true
+        required: false
       },
       race: {
         type: String,
         // enum: ['', ''], //Add later when needed
-        required: true
+        required: false
       },
     }],
     required: false
