@@ -1,11 +1,8 @@
 import React, {Component} from "react";
-import { Card } from 'react-bootstrap';
 import './questions.css';
 import '../../App.css';
 import Pagination from '../pagination/pagination.js';
 import QuestionCard from '../question/question.js';
-import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory from 'react-bootstrap-table2-paginator';
 
 /*************************/
 /*  Class Implementation */
@@ -14,32 +11,33 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 export class Questions extends Component {
   state = { allQuestions: [], currentQuestions: [], currentPage: null, totalPages: null }
 
-  componentDidMount() {
-    const { data: allQuestions = [] } = [{"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200},{"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200},{"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":0, "body": "How many hours did you sleep last night?",
+  componentWillMount() {
+    const allQuestions = [{"id":0, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":1, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":2, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":3, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":4, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":5, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":6, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":7, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":8, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":9, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":10, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":11, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":12, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":13, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":14, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":15, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":16, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":17, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":18, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":19, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":20, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":21, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":22, "body": "How many hours did you sleep last night?",
+    "date": "4/9/20", "responses":200}, {"id":23, "body": "How many hours did you sleep last night?",
     "date": "4/9/20", "responses":200}, ];
+    console.log("component will mount");
     this.setState({ allQuestions });
   }
 
@@ -57,6 +55,8 @@ export class Questions extends Component {
 
     const { allQuestions, currentQuestions, currentPage, totalPages } = this.state;
     const totalQuestions = allQuestions.length;
+    console.log(allQuestions)
+    console.log(totalQuestions)
 
     if (totalQuestions === 0) return null;
 
@@ -70,7 +70,7 @@ export class Questions extends Component {
             <div className="d-flex flex-row align-items-center">
 
               <h2 className={headerClass}>
-                <strong className="text-secondary">{totalQuestions}</strong> Countries
+                <strong className="text-secondary">{totalQuestions}</strong> Total Questions
               </h2>
 
               { currentPage && (
@@ -82,7 +82,7 @@ export class Questions extends Component {
             </div>
 
             <div className="d-flex flex-row py-4 align-items-center">
-              <Pagination totalRecords={totalQuestions} pageLimit={18} pageNeighbours={1} onPageChanged={this.onPageChanged} />
+              <Pagination totalRecords={totalQuestions} pageLimit={12} pageNeighbours={1} onPageChanged={this.onPageChanged} />
             </div>
           </div>
 
