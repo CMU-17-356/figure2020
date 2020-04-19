@@ -199,4 +199,4 @@ Pagination.propTypes = {
   onPageChanged: PropTypes.func
 };
 
-export default Pagination;
+export default Pagination; 

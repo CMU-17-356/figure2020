@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import './questions.css';
 import '../../App.css';
+import axios from 'axios'
+import { Link } from "react-router-dom";
 import Pagination from '../pagination/pagination.js';
 import QuestionCard from '../question/question.js';
 
@@ -9,7 +11,7 @@ import QuestionCard from '../question/question.js';
 /*************************/
 
 export class Questions extends Component {
-  state = { allQuestions: [], currentQuestions: [], currentPage: null, totalPages: null }
+ state = { allQuestions: [], currentQuestions: [], currentPage: null, totalPages: null }
 
   componentWillMount() {
     const allQuestions = [{"id":0, "body": "How many hours did you sleep last night?",
@@ -51,8 +53,9 @@ export class Questions extends Component {
     this.setState({ currentPage, currentQuestions, totalPages });
   }
 
-  render() {
 
+
+  render() {
     const { allQuestions, currentQuestions, currentPage, totalPages } = this.state;
     const totalQuestions = allQuestions.length;
     console.log(allQuestions)
@@ -61,7 +64,6 @@ export class Questions extends Component {
     if (totalQuestions === 0) return null;
 
     const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
-
     return (
       <div className="container mb-5">
         <div className="row d-flex flex-row py-5">

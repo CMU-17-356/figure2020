@@ -15,3 +15,7 @@
   background-color: rgba(0,0,0,.35);
   border-radius: 15px;
 }
+
+Link {
+	textDecoration: 'none' 
+}
