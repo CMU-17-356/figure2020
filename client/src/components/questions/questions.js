@@ -9,37 +9,24 @@ import QuestionCard from '../question/question.js';
 /*************************/
 
 export class Questions extends Component {
- state = { allQuestions: [], currentQuestions: [], currentPage: null, totalPages: null }
+  constructor() {
+    super();
+    this.state = {
+      allQuestions: [],
+      currentQuestions: [],
+      currentPage: null,
+      totalPages: null
+    }
+  }
 
   componentDidMount() {
-   // TODO: replace hardcoded data with fetch calls to the back-end
-    const allQuestions = [{"id":0, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":1, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":2, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":3, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":4, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":5, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":6, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":7, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":8, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":9, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":10, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":11, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":12, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":13, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":14, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":15, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":16, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":17, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":18, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":19, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":20, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":21, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":22, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, {"id":23, "body": "How many hours did you sleep last night?",
-    "date": "4/9/20", "responses":200}, ];
-    this.setState({ allQuestions });
+    axios.get('/questions')
+      .then(res => {
+        const questions = res.data;
+        this.setState({allQuestions: questions});
+      });
   }
+
 
   onPageChanged = data => {
     const { allQuestions } = this.state;
@@ -58,6 +45,7 @@ export class Questions extends Component {
     const totalQuestions = allQuestions.length;
     console.log(allQuestions)
     console.log(totalQuestions)
+    console.log(currentQuestions)
 
     if (totalQuestions === 0) return null;
 
