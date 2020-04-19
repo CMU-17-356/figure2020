@@ -46,11 +46,11 @@ export class Response extends Component {
       <div>
       <button id="settings" onClick={this.props.settingsPage}><img src={settings} width="40px" height="40px"/></button>
       <div id="containResponse" >
-        <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flex-direction": "row", "justify-content": "center"}}>
+        <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center"}}>
           Hello, {this.props.name}! <br></br>
         </div>
         <br></br>
-        <Card style={{"background-color": "rgba(245, 245, 245, .5)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px", "width": "550px"}}>
+        <Card style={{"backgroundColor": "rgba(245, 245, 245, .5)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px", "width": "550px"}}>
         <div style={{ "font-size": "25px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "text-align": "center"}}>
           <br></br>Hours slept last night
         </div>
