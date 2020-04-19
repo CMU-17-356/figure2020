@@ -22,37 +22,45 @@ questionSchema.set('toJSON,', {
 /********************/
 const choiceSchema = new Schema({
   body: {type: String, required: true},
-  responses: {
-    type: [{
-      gender: {
-        type: String,
-        // enum: ['', ''], //Add later when needed
-        required: false
-      },
-      age: {
-        type: Number,
-        required: false
-      },
-      race: {
-        type: String,
-        // enum: ['', ''], //Add later when needed
-        required: false
-      },
-    }],
-    required: false
-  },
+  responses: [
+      {type: Schema.Types.ObjectId, ref: 'Response'}
+    ]
 });
 
 choiceSchema.set('toJSON', {
   getters: true,
 });
 
+const ResponseSchema = new Schema({
+  gender: {
+    type: String,
+    // enum: ['', ''], //Add later when needed
+    required: false
+  },
+  age: {
+    type: Number,
+    required: false
+  },
+  race: {
+    type: String,
+    // enum: ['', ''], //Add later when needed
+    required: false
+  }
+});
+
+ResponseSchema.set('toJSON', {
+  getters: true,
+});
+
 const Question = mongoose.model('Question', questionSchema);
 const Choice = mongoose.model('Choice', choiceSchema);
+const Response = mongoose.model('Response', ResponseSchema);
+
 /********************/
 /*     Exports      */
 /********************/
 module.exports = {
   Question: Question,
   Choice: Choice,
+  Response: Response,
 };

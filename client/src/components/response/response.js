@@ -55,12 +55,12 @@ export class Response extends Component {
   componentDidMount() {
     axios.get('/questions/' + this.state.questionId)
       .then(res => {
-          const question = res.data;
-          this.setState({question: question.body,
-                         date: question.date_asked,
-                         choices: question.choices
-                          });
-        })
+        const question = res.data;
+        this.setState({question: question.body,
+          date: question.date_asked,
+          choices: question.choices
+        });
+      })
   };
 
   render() {
@@ -69,27 +69,25 @@ export class Response extends Component {
         {this.state.question}
         {this.state.date}
         <Card style={{"background-color": "rgba(245, 245, 245, .5)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px", "width": "550px"}}>
-        <div style={{ "font-size": "25px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "text-align": "center"}}>
-          <br></br>Hours slept last night
-        </div>
-        <div style={{"margin":"30px"}}>
-        <Bar
-          legend={legendOpts}
-          data={data}
-          width={100}
-          height={50}
-          options={{
-            maintainAspectRatio: true,
-            scales: {
-              xAxes: [{
-                gridLines: { display:false },
-              }]
-            }
-          }}
-        />
-      </div>
-
-
+          <div style={{ "font-size": "25px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "text-align": "center"}}>
+            <br></br>Hours slept last night
+          </div>
+          <div style={{"margin":"30px"}}>
+            <Bar
+              legend={legendOpts}
+              data={data}
+              width={100}
+              height={50}
+              options={{
+                maintainAspectRatio: true,
+                scales: {
+                  xAxes: [{
+                    gridLines: { display:false },
+                  }]
+                }
+              }}
+            />
+          </div>
         </Card>
       </div>
     )
@@ -98,7 +96,4 @@ export class Response extends Component {
   }
 }
 
-/*************************/
-/*   Export Statements   */
-/*************************/
 export default Response;

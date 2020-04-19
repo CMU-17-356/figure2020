@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import './questions.css';
 import '../../App.css';
-import axios from 'axios'
-import { Link } from "react-router-dom";
 import Pagination from '../pagination/pagination.js';
 import QuestionCard from '../question/question.js';
 
