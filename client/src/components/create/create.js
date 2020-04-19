@@ -54,7 +54,12 @@ export class Create extends Component {
       },
       body: JSON.stringify(newQuestion)
     }).then(async (response) => {
-      console.log(response.status);
+      if (response.status === 200) {
+        window.alert("You have successfully added the question!");
+      } else {
+        window.alert("Adding question failed. Please try again!");
+      }
+      window.location.reload();
     });
   };
 
