@@ -9,6 +9,7 @@ import QuestionCard from '../question/question.js';
 /*************************/
 /*  Class Implementation */
 /*************************/
+
 export class Questions extends Component {
  state = { allQuestions: [], currentQuestions: [], currentPage: null, totalPages: null }
 
@@ -91,8 +92,10 @@ export class Questions extends Component {
 
         </div>
       </div>
-    )
+    );
+
   }
+
 }
 
 /*************************/

@@ -28,7 +28,25 @@ questionSchema.set('toJSON,', {
 /********************/
 const choiceSchema = new Schema({
   body: {type: String, required: true},
-  number_of_responses: {type: Number, required: true},
+  responses: {
+    type: [{
+      gender: {
+        type: String,
+        // enum: ['', ''], //Add later when needed
+        required: false
+      },
+      age: {
+        type: Number,
+        required: false
+      },
+      race: {
+        type: String,
+        // enum: ['', ''], //Add later when needed
+        required: false
+      },
+    }],
+    required: false
+  },
 });
 
 choiceSchema.set('toJSON', {
