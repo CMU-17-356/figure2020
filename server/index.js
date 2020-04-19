@@ -56,8 +56,24 @@ app.get("/questions", async (req, res) => {
 });
 
 app.post("/question", async (req,res) => {
-	const question = new models.Question(req.body);
 	try {
+		const choiceIds = [];
+		const choicesContent = req.body.choices;
+		for (const elem of choicesContent) {
+			let newId = new mongoose.Types.ObjectId();
+			choiceIds.push(newId);
+			const newChoice = new models.Choice({
+				_id: newId,
+				body: elem.choice
+			});
+			await newChoice.save();
+		}
+		const question = new models.Question({
+			_id: new mongoose.Types.ObjectId(),
+			body: req.body.body,
+			date_asked: req.body.date_asked,
+			choices: choiceIds
+		});
 		await question.save();
 		res.send(question);
 	} catch (err) {
