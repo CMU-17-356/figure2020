@@ -34,21 +34,40 @@ export class Create extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: add axio calls to send Question and Response to back-end
-    console.log("question", this.state.question);
-    console.log("responses", this.state.response);
+    let newQuestion = {
+      "body": this.state.question,
+      "date_asked": new Date().toJSON(),
+      "choices": []
+    }
+
+    this.state.response.forEach(elem => {
+      newQuestion.choices.push({
+        "choice": elem,
+      });
+    })
+
+    fetch('/question', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newQuestion)
+    }).then(async (response) => {
+      console.log(response.status);
+    });
   };
 
   render() {
     return (
-      <div className="container" style={{"margin-top":"60px"}}>
-      <div style={{"display": "flex", "flex-direction":"row", "justify-content":"center"}}>
-      <Card style={{"width":"400px","background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
+      <div className="container" style={{"marginTop":"60px"}}>
+      <div style={{"display": "flex", "flexDirection":"row", "justifyContent":"center"}}>
+      <Card style={{"width":"400px","backgroundColor": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
       <Card.Body><h1>Enter Question</h1></Card.Body>
       </Card></div>
       <br></br>
       <div className="c my-4 text-left">
-        <Card style={{"background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
+        <Card style={{"backgroundColor": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
           <Card.Body >
             <form onSubmit={this.handleSubmit}>
               <label>Question:</label>
