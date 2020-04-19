@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import './questions.css';
 import '../../App.css';
-import axios from 'axios'
-import { Link } from "react-router-dom";
 import Pagination from '../pagination/pagination.js';
 import QuestionCard from '../question/question.js';
 
@@ -13,7 +11,8 @@ import QuestionCard from '../question/question.js';
 export class Questions extends Component {
  state = { allQuestions: [], currentQuestions: [], currentPage: null, totalPages: null }
 
-  componentWillMount() {
+  componentDidMount() {
+   // TODO: replace hardcoded data with fetch calls to the back-end
     const allQuestions = [{"id":0, "body": "How many hours did you sleep last night?",
     "date": "4/9/20", "responses":200}, {"id":1, "body": "How many hours did you sleep last night?",
     "date": "4/9/20", "responses":200}, {"id":2, "body": "How many hours did you sleep last night?",
@@ -39,7 +38,6 @@ export class Questions extends Component {
     "date": "4/9/20", "responses":200}, {"id":22, "body": "How many hours did you sleep last night?",
     "date": "4/9/20", "responses":200}, {"id":23, "body": "How many hours did you sleep last night?",
     "date": "4/9/20", "responses":200}, ];
-    console.log("component will mount");
     this.setState({ allQuestions });
   }
 
