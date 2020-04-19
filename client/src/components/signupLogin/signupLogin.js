@@ -32,7 +32,7 @@ export class SignupLogin extends Component {
     }
 
     return (
-      <div style={{display: "flex", "justifyContent": "center", "margin-top": "60px"}}>
+      <div style={{display: "flex", "justifyContent": "center", "marginTop": "60px"}}>
         <Card style={{ width: '45rem', margin: "10px", "background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
           <Card.Body>
             {this.props.user === "false" ?

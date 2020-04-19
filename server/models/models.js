@@ -7,15 +7,9 @@ const Schema = mongoose.Schema;
 const questionSchema = new Schema({
   body: {type: String, required: true},
   date_asked: {type: Date, required: true},
-  choices: {
-    type: [{
-      choice: {
-        type: String,
-        required: true
-      },
-    }],
-    required: true
-  },
+  choices: [
+    {type: Schema.Types.ObjectId, ref: 'Choice'}
+  ],
 });
 
 questionSchema.set('toJSON,', {
@@ -53,11 +47,12 @@ choiceSchema.set('toJSON', {
   getters: true,
 });
 
-
+const Question = mongoose.model('Question', questionSchema);
+const Choice = mongoose.model('Choice', choiceSchema);
 /********************/
 /*     Exports      */
 /********************/
 module.exports = {
-  Question: mongoose.model('question', questionSchema),
-  Choice: mongoose.model('choice', choiceSchema),
+  Question: Question,
+  Choice: Choice,
 };
