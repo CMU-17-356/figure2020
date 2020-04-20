@@ -40,11 +40,6 @@ mongoose.connect(mongoDB, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-/*****************************/
-/*                           */
-/*    Model API Functions    */
-/*                           */
-/*****************************/
 
 app.get("/questions", async (req, res) => {
 	const questions = await models.Question.find({});
@@ -53,6 +48,43 @@ app.get("/questions", async (req, res) => {
 	} catch (err) {
 		res.status(500).send(err);
 	}
+});
+
+app.get("/question/:id", async (req, res) => {
+	models.Question.findById(req.params.id, async (err, question) => {
+		if (err) {
+			res.status(500).send(err);
+		} else {
+			let resJson = {
+				body: question.body,
+				date_asked: question.date_asked,
+			}
+			let choiceIds = question.choices.map(idStr => mongoose.Types.ObjectId(idStr));
+			let choiceBodies= [];
+			let choiceCounts = [];
+			const choices = await models.Choice
+				.aggregate([
+					{
+						$match: {
+							"_id": {"$in": choiceIds}
+						}
+					},
+					{
+						$project: {
+							body: true,
+							choiceCount: {$size: "$responses"}
+						}
+					}
+				]);
+			choices.forEach(elem => {
+				choiceBodies.push(elem.body);
+				choiceCounts.push(elem.choiceCount);
+			});
+			resJson.choices = choiceBodies;
+			resJson.counts = choiceCounts;
+			res.status(200).json(resJson);
+		}
+	})
 });
 
 app.post("/question", async (req,res) => {
