@@ -81,6 +81,37 @@ app.post("/question", async (req,res) => {
 	}
 });
 
+app.get("/mostRecentQuestion", async (req, res) => {
+	try {
+		const question = await models.Question.find().sort({"date_asked": -1}).limit(1);
+		let choiceIds = question[0].choices.map(idStr => mongoose.Types.ObjectId(idStr));
+		let choiceBodies= [];
+		const choices = await models.Choice
+			.aggregate([
+				{
+					$match: {
+						"_id": {"$in": choiceIds}
+					}
+				},
+				{
+					$project: {
+						body: true
+					}
+				}
+			]);
+		choices.forEach(elem => {
+			choiceBodies.push(elem.body);
+		});
+		let resJson = {
+			questionBody: question[0].body,
+			choiceNames: choiceBodies
+		}
+		res.status(200).json(resJson);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+});
+
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
 	response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));
