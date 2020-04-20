@@ -81,6 +81,25 @@ app.post("/question", async (req,res) => {
 	}
 });
 
+app.post("/response/:id", async (req,res) => {
+	try {
+		let responseId = new mongoose.Types.ObjectId();
+		const newResponse = new models.Response({
+			_id: responseId,
+			body: req.body
+		});
+		await newResponse.save();
+
+		var query = { _id: req.params.id },
+		    options = {},
+		    callback = function (err, result) { };
+		models.Choice.updateOne(query, {$push: {'responses': responseId}}, options, callback)
+		res.send(newResponse);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+});
+
 app.get("/mostRecentQuestion", async (req, res) => {
 	try {
 		const question = await models.Question.find().sort({"date_asked": -1}).limit(1);
@@ -104,7 +123,8 @@ app.get("/mostRecentQuestion", async (req, res) => {
 		});
 		let resJson = {
 			questionBody: question[0].body,
-			choiceNames: choiceBodies
+			choiceNames: choiceBodies,
+			choiceIds: choiceIds
 		}
 		res.status(200).json(resJson);
 	} catch (err) {
