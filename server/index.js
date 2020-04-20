@@ -113,6 +113,57 @@ app.post("/question", async (req,res) => {
 	}
 });
 
+app.post("/response/:id", async (req,res) => {
+	try {
+		let responseId = new mongoose.Types.ObjectId();
+		const newResponse = new models.Response({
+			_id: responseId,
+			body: req.body
+		});
+		await newResponse.save();
+
+		var query = { _id: req.params.id },
+		    options = {},
+		    callback = function (err, result) { };
+		models.Choice.updateOne(query, {$push: {'responses': responseId}}, options, callback)
+		res.send(newResponse);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+});
+
+app.get("/mostRecentQuestion", async (req, res) => {
+	try {
+		const question = await models.Question.find().sort({"date_asked": -1}).limit(1);
+		let choiceIds = question[0].choices.map(idStr => mongoose.Types.ObjectId(idStr));
+		let choiceBodies= [];
+		const choices = await models.Choice
+			.aggregate([
+				{
+					$match: {
+						"_id": {"$in": choiceIds}
+					}
+				},
+				{
+					$project: {
+						body: true
+					}
+				}
+			]);
+		choices.forEach(elem => {
+			choiceBodies.push(elem.body);
+		});
+		let resJson = {
+			questionBody: question[0].body,
+			choiceNames: choiceBodies,
+			choiceIds: choiceIds
+		}
+		res.status(200).json(resJson);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+});
+
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
 	response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));

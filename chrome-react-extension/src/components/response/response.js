@@ -5,9 +5,6 @@ import './response.css';
 import {Bar} from 'react-chartjs-2';
 import settings from '../../settings.png';
 
-
-
-
 let questionTitle = 'How many hours did you sleep last night?';
 
 /*************************/
