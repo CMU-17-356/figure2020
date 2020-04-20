@@ -10,6 +10,8 @@ The application is running live at:
 ### Local Startup and Deployment
 To start up the application locally, first run `npm install` then `npm start` within the client and server directories. Afterwards the application should be running locally at http://localhost:3000/
 
+To start up the chrome extension locally, first run `npm install -g create_react_app`, `npm install`, `npm start`. Afterwards, the application should be running locally at http://localhost:3000/
+
 ### Local Testing
 To run tests locally first run `npm install` then `npm test` within the server directory.
 
