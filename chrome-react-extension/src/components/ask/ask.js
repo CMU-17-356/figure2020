@@ -10,7 +10,8 @@ export class Ask extends Component {
     super(props);
     this.state = {
       question: null,
-      choices: null
+      choices: null,
+      choiceIds: null
     };
   }
 
@@ -20,17 +21,33 @@ export class Ask extends Component {
         const resJson = res.data;
         this.setState({
           question: resJson.questionBody,
-          choices: resJson.choiceNames
+          choices: resJson.choiceNames,
+          choiceIds: resJson.choiceIds
         })
       });
   };
+
+  switchPage = (i) => {
+    let body = JSON.stringify({"gender": "female"});
+    fetch('/response/' + this.state.choiceIds[i], {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: body
+    }).then(async (response) => {
+      console.log(response.status);
+      });
+    this.props.switchPage();
+  }
 
   render() {
     let choicesList = []
     for (let i in this.state.choices) {
       let choice = this.state.choices[i];
       choicesList.push(
-        <div onClick={this.props.switchPage} key={i} className="cards" style={{margin: "12px"}}>
+        <div onClick={() => this.switchPage(i)} key={i} className="cards" style={{margin: "12px"}}>
           <Card style={{ width: '9rem', height: '3rem', "backgroundColor": "rgba(0, 0, 0, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
             <Card.Body className="contains" style={{color: "white", display: "flex", "flexDirection": "row", "justifyContent": "center", "fontWeight":"550", "fontSize": "14px"}}>
               <Card.Text>{choice}</Card.Text>
