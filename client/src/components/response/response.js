@@ -75,6 +75,11 @@ export class Response extends Component {
                 scales: {
                   xAxes: [{
                     gridLines: { display:false },
+                  }],
+                  yAxes: [{
+                   ticks: {
+                    beginAtZero: true,
+                    }
                   }]
                 }
               }}
