@@ -38,7 +38,8 @@ const ResponseSchema = new Schema({
     required: false
   },
   age: {
-    type: Number,
+    type: String,
+    // enum: ['', ''], //Add later when needed
     required: false
   },
   race: {

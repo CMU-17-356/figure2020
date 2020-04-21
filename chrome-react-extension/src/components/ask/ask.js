@@ -28,17 +28,22 @@ export class Ask extends Component {
   };
 
   switchPage = (i) => {
-    let body = JSON.stringify({"gender": "female"});
+    // TODO: has to replace the data with actual saved data in the browser
+    let reqBody = JSON.stringify({
+      "gender": "female",
+      "age": "20-30",
+      "race": "asian"
+    });
     fetch('/response/' + this.state.choiceIds[i], {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: body
+      body: reqBody
     }).then(async (response) => {
       console.log(response.status);
-      });
+    });
     this.props.switchPage();
   }
 

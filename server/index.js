@@ -50,6 +50,16 @@ app.get("/questions", async (req, res) => {
 	}
 });
 
+// for debugging purposes
+app.get("/responses", async (req, res) => {
+	const responses = await models.Response.find({});
+	try {
+		res.send(responses);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+});
+
 app.get("/question/:id", async (req, res) => {
 	models.Question.findById(req.params.id, async (err, question) => {
 		if (err) {
@@ -118,11 +128,13 @@ app.post("/response/:id", async (req,res) => {
 		let responseId = new mongoose.Types.ObjectId();
 		const newResponse = new models.Response({
 			_id: responseId,
-			body: req.body
+			gender: req.body.gender,
+			age: req.body.age,
+			race: req.body.race
 		});
 		await newResponse.save();
 
-		var query = { _id: req.params.id },
+		let query = { _id: req.params.id },
 		    options = {},
 		    callback = function (err, result) { };
 		models.Choice.updateOne(query, {$push: {'responses': responseId}}, options, callback)
@@ -168,7 +180,7 @@ app.get("/mostRecentQuestionAnswers", async (req, res) => {
 	try {
 		const question = await models.Question.find().sort({"date_asked": -1}).limit(1);
 		let choiceIds = question[0].choices.map(idStr => mongoose.Types.ObjectId(idStr));
-		let choiceBodies= [];
+		let choiceBodies = [];
 		let choiceCounts = [];
 		const choices = await models.Choice
 			.aggregate([
@@ -194,6 +206,82 @@ app.get("/mostRecentQuestionAnswers", async (req, res) => {
 			counts: choiceCounts
 		}
 		res.status(200).json(resJson);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+});
+
+app.get("/questionData/:id", async (req, res) => {
+	try {
+		let result = [];
+		const question = await models.Question.findById(req.params.id);
+		const choiceIds = question.choices;
+		const choices = await models.Choice
+			.aggregate([
+				{
+					$match: {
+						"_id": {"$in": choiceIds}
+					}
+				},
+				{
+					$project: {
+						body: true,
+						responses: true,
+					}
+				}
+			]);
+		for (const elem of choices) {
+			const choiceName = elem.body;
+			const responseIds = elem.responses;
+			const counts = await models.Response
+				.aggregate([
+					{
+						$match: {
+							"_id": {"$in": responseIds}
+						}
+					},
+					{ $facet:
+							{
+								"gender": [
+									{
+										$group: {
+											"_id": '$gender',
+											count: {
+												$sum: 1
+											}
+										}
+									}
+								],
+								"age": [
+									{
+										$group: {
+											"_id": '$age',
+											count: {
+												$sum: 1
+											}
+										},
+									}
+								],
+								"race": [
+									{
+										$group: {
+											"_id": '$race',
+											count: {
+												$sum: 1
+											}
+										},
+									}
+								],
+							}
+					},
+				]);
+			let resultJson = JSON.parse(JSON.stringify(counts))
+			resultJson[0].totalResponse = responseIds.length;
+			let fullResult = {};
+			fullResult[choiceName] = resultJson[0];
+			result.push(fullResult);
+		}
+		res.status(200).json(result);
 	} catch (err) {
 		res.status(500).send(err);
 	}
