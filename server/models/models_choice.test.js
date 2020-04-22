@@ -9,7 +9,10 @@ var Choice = models.Choice;
 /**************************/
 /*  Choice Schema Tests   */
 /**************************/
+
+// ****************************** //
 // *** Basic Validation Tests *** //
+// ****************************** //
 // Checks that a valid Choice object has no errors
 describe('choice', function() {
   it('should be valid if no required fields are left empty', function(done) {

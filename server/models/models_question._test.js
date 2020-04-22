@@ -9,7 +9,10 @@ var Question = models.Question;
 /**************************/
 /* Question Schema Tests  */
 /**************************/
+
+// ****************************** //
 // *** Basic Validation Tests *** //
+// ****************************** //
 // Checks that a valid Question object has no errors
 describe('question', function() {
   it('should be valid if no required fields are left empty', function(done) {
