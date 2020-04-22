@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/dkim1546/figure2020.svg?branch=master)](https://travis-ci.com/dkim1546/figure2020)
+[![Build Status](https://travis-ci.com/CMU-17-356/figure2020.svg?branch=master)](https://travis-ci.com/CMU-17-356/figure2020)
 
 # Figure 2020
 17-356 Final Project
