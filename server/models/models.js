@@ -2,37 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /********************/
-/*  Question Model  */
-/********************/
-const questionSchema = new Schema({
-  body: {type: String, required: true},
-  date_asked: {type: Date, required: true},
-  choices: [
-    {type: Schema.Types.ObjectId, ref: 'Choice'}
-  ],
-});
-
-questionSchema.set('toJSON,', {
-  getters: true,
-});
-
-
-/********************/
-/*   Choice Model   */
-/********************/
-const choiceSchema = new Schema({
-  body: {type: String, required: true},
-  responses: [
-      {type: Schema.Types.ObjectId, ref: 'Response'}
-    ]
-});
-
-choiceSchema.set('toJSON', {
-  getters: true,
-});
-
-
-/********************/
 /*  Response Model  */
 /********************/
 const responseSchema = new Schema({
@@ -57,6 +26,38 @@ const responseSchema = new Schema({
 responseSchema.set('toJSON', {
   getters: true,
 });
+
+
+/********************/
+/*   Choice Model   */
+/********************/
+const choiceSchema = new Schema({
+  body: {type: String, required: true},
+  responses: [
+      {type: Schema.Types.ObjectId, ref: 'Response'}
+    ]
+});
+
+choiceSchema.set('toJSON', {
+  getters: true,
+});
+
+
+/********************/
+/*  Question Model  */
+/********************/
+const questionSchema = new Schema({
+  body: {type: String, required: true},
+  date_asked: {type: Date, required: true},
+  choices: [
+    {type: Schema.Types.ObjectId, ref: 'Choice'}
+  ],
+});
+
+questionSchema.set('toJSON,', {
+  getters: true,
+});
+
 
 
 /********************/

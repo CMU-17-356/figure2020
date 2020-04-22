@@ -16,7 +16,7 @@ var Choice = models.Choice;
 // Checks that a valid Choice object has no errors
 describe('choice', function() {
   it('should be valid if no required fields are left empty', function(done) {
-    // several valid response objects to be used for creating a choice
+    // Several valid response objects to be used for creating a choice
     var r0 = new Response({age: 24, gender: "Male", race: "White"});
     var r1 = new Response({age: 19, gender: "Female", race: "Black/African American"});
     var r2 = new Response({age: 32, gender: "Other", race: "Asian"});
@@ -32,7 +32,7 @@ describe('choice', function() {
 // Checks that empty required fields create an error
 describe('choice', function() {
   it('should be invalid if a required field is left empty', function(done) {
-    // several valid response objects to be used for creating a choice
+    // Several valid response objects to be used for creating a choice
     var r0 = new Response({age: 24, gender: "Male", race: "White"});
     var r1 = new Response({age: 19, gender: "Female", race: "Black/African American"});
     var r2 = new Response({age: 32, gender: "Other", race: "Asian"});
@@ -49,7 +49,7 @@ describe('choice', function() {
 // Checks that empty non-required fields do not create an console.error;
 describe('choice', function() {
   it('should be invalid if a required field is left empty', function(done) {
-    // several valid response objects to be used for creating a choice
+    // Several valid response objects to be used for creating a choice
     var r0 = new Response({age: 24, gender: "Male", race: "White"});
     var r1 = new Response({age: 19, gender: "Female", race: "Black/African American"});
     var r2 = new Response({age: 32, gender: "Other", race: "Asian"});
@@ -71,7 +71,7 @@ describe('choice', function() {
 // Checks that a Choice's body field is a string
 describe('choice', function() {
   it('should be invalid if Choice\'s body field is not a string', function(done) {
-    // several valid response objects to be used for creating a choice
+    // Several valid response objects to be used for creating a choice
     var r0 = new Response({age: 24, gender: "Male", race: "White"});
     var r1 = new Response({age: 19, gender: "Female", race: "Black/African American"});
     var r2 = new Response({age: 32, gender: "Other", race: "Asian"});
