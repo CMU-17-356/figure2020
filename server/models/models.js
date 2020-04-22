@@ -2,17 +2,28 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /********************/
-/*  Question Model  */
+/*  Response Model  */
 /********************/
-const questionSchema = new Schema({
-  body: {type: String, required: true},
-  date_asked: {type: Date, required: true},
-  choices: [
-    {type: Schema.Types.ObjectId, ref: 'Choice'}
-  ],
+const responseSchema = new Schema({
+  age: {
+    type: Number,
+    min: 0,
+    max: 122,
+    required: false
+  },
+  gender: {
+    type: String,
+    enum: ['male', 'female', 'other'],
+    required: false
+  },
+  race: {
+    type: String,
+    enum: ['white', 'african american', 'asian', 'hispanic', 'american indian', 'other'],
+    required: false
+  }
 });
 
-questionSchema.set('toJSON,', {
+responseSchema.set('toJSON', {
   getters: true,
 });
 
@@ -31,34 +42,31 @@ choiceSchema.set('toJSON', {
   getters: true,
 });
 
-const ResponseSchema = new Schema({
-  gender: {
-    type: String,
-    // enum: ['', ''], //Add later when needed
-    required: false
-  },
-  age: {
-    type: Number,
-    required: false
-  },
-  race: {
-    type: String,
-    // enum: ['', ''], //Add later when needed
-    required: false
-  }
+
+/********************/
+/*  Question Model  */
+/********************/
+const questionSchema = new Schema({
+  body: {type: String, required: true},
+  date_asked: {type: Date, required: true},
+  choices: [
+    {type: Schema.Types.ObjectId, ref: 'Choice'}
+  ],
 });
 
-ResponseSchema.set('toJSON', {
+questionSchema.set('toJSON,', {
   getters: true,
 });
 
-const Question = mongoose.model('Question', questionSchema);
-const Choice = mongoose.model('Choice', choiceSchema);
-const Response = mongoose.model('Response', ResponseSchema);
+
 
 /********************/
 /*     Exports      */
 /********************/
+const Question = mongoose.model('Question', questionSchema);
+const Choice = mongoose.model('Choice', choiceSchema);
+const Response = mongoose.model('Response', responseSchema);
+
 module.exports = {
   Question: Question,
   Choice: Choice,
