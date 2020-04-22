@@ -38,8 +38,8 @@ choiceSchema.set('toJSON', {
 const responseSchema = new Schema({
   age: {
     type: Number,
-    min: [0, 'Not a valid age, too young'],
-    max: [122, 'Not a valid age, too olds'],
+    min: 0,
+    max: 122,
     required: false
   },
   gender: {

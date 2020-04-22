@@ -12,7 +12,7 @@ var Response = models.Response;
 // Checks that a valid Choice object has no errors
 describe('response', function() {
   it('should be valid if no required fields are left empty', function(done) {
-  	var r = new Response({ age: 24, gender: "male", race: "white"});
+  	var r = new Response({age: 24, gender: "male", race: "white"});
   	r.validate(function(err) {
   		expect(err).to.not.exist;
   		done();
@@ -55,9 +55,47 @@ describe('response', function() {
 
 
 // *** Type/Enum Validation Tests *** //
-// Checks that a Choices age field is a Number
+// Checks that a Choices age field is a Number and within the proper range (0-122)
 describe('response', function() {
-  it('should be invalid if a Choices age field is not a Number', function(done) {
-    // Checks that a number
+  it('should be invalid if a Choices age field is not a Number or out of range (0-122)', function(done) {
+    // Checks that a number age within range (0-122) does not create an error
+    var r = new Response({age: 0, gender: "male", race: "white"});
+  	r.validate(function(err) {
+  		expect(err).to.not.exist;
+  		done();
+  	});
+    r = new Response({ age: 122, gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    r = new Response({ age: 24, gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+
+    // Checks that a non-number age creates an error
+    r = new Response({ age: "twenty", gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
+    r = new Response({ age: "Twenty-Four", gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
+    r = new Response({ age: "age", gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
+
+    // Checks that a number age below the range creates an error
+
+
+    // Checks that a number age above the range creates an error
+
   });
 });
