@@ -31,7 +31,11 @@ choiceSchema.set('toJSON', {
   getters: true,
 });
 
-const ResponseSchema = new Schema({
+
+/********************/
+/*  Response Model  */
+/********************/
+const responseSchema = new Schema({
   gender: {
     type: String,
     // enum: ['', ''], //Add later when needed
@@ -48,17 +52,18 @@ const ResponseSchema = new Schema({
   }
 });
 
-ResponseSchema.set('toJSON', {
+responseSchema.set('toJSON', {
   getters: true,
 });
 
-const Question = mongoose.model('Question', questionSchema);
-const Choice = mongoose.model('Choice', choiceSchema);
-const Response = mongoose.model('Response', ResponseSchema);
 
 /********************/
 /*     Exports      */
 /********************/
+const Question = mongoose.model('Question', questionSchema);
+const Choice = mongoose.model('Choice', choiceSchema);
+const Response = mongoose.model('Response', responseSchema);
+
 module.exports = {
   Question: Question,
   Choice: Choice,
