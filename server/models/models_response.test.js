@@ -188,3 +188,68 @@ describe('response', function() {
     });
   });
 });
+
+// Checks that a Choices race field is one of the following string enums ['white', 'african american', 'asian', 'hispanic', 'american indian', 'other']
+// Technically there capitalization should not matter but since this will be a select option it does not matter
+describe('response', function() {
+  it('should be invalid if a Choice\'s race field is not one of the following string enums [\'white\', \'african american\', \'asian\', \'hispanic\', \'american indian\', \'other\']', function(done) {
+    // Checks that a valid race does not create an error
+    var r = new Response({age: 24, gender: "male", race: "white"});
+  	r.validate(function(err) {
+  		expect(err).to.not.exist;
+  		done();
+  	});
+    r = new Response({ age: 24, gender: "male", race: "african american"});
+    r.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    r = new Response({ age: 24, gender: "male", race: "asian"});
+    r.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    r = new Response({ age: 24, gender: "male", race: "hispanic"});
+    r.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    r = new Response({ age: 24, gender: "male", race: "american indian"});
+    r.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    r = new Response({ age: 24, gender: "male", race: "other"});
+    r.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+
+    // Checks that an invalid race creates an error
+    var r = new Response({age: 24, gender: "male", race: "whit"});
+  	r.validate(function(err) {
+  		expect(err.errors.race).to.exist;
+  		done();
+  	});
+    r = new Response({ age: 24, gender: "male", race: "orange"});
+    r.validate(function(err) {
+      expect(err.errors.race).to.exist;
+      done();
+    });
+    r = new Response({ age: 24, gender: "male", race: 0});
+    r.validate(function(err) {
+      expect(err.errors.race).to.exist;
+      done();
+    });
+    r = new Response({ age: 24, gender: "male", race: 2});
+    r.validate(function(err) {
+      expect(err.errors.race).to.exist;
+      done();
+    });
+    r = new Response({ age: 24, gender: "male", race: "dwarf"});
+    r.validate(function(err) {
+      expect(err.errors.race).to.exist;
+      done();
+    });
+  });
+});
