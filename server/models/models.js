@@ -36,13 +36,15 @@ choiceSchema.set('toJSON', {
 /*  Response Model  */
 /********************/
 const responseSchema = new Schema({
+  age: {
+    type: Number,
+    min: [0, 'Not a valid age, too young'],
+    max: [122, 'Not a valid age, too olds'],
+    required: false
+  },
   gender: {
     type: String,
     enum: ['male', 'female', 'other'],
-    required: false
-  },
-  age: {
-    type: Number,
     required: false
   },
   race: {

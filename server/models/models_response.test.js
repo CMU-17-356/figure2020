@@ -12,7 +12,7 @@ var Response = models.Response;
 // Checks that a valid Choice object has no errors
 describe('response', function() {
   it('should be valid if no required fields are left empty', function(done) {
-  	var r = new Response({gender: "Male", age: 24, race: "White"});
+  	var r = new Response({ age: 24, gender: "male", race: "white"});
   	r.validate(function(err) {
   		expect(err).to.not.exist;
   		done();
@@ -24,21 +24,21 @@ describe('response', function() {
 describe('response', function() {
   it('should be invalid if a required field is left empty', function(done) {
     // Checks that an empty gender field does not createe an error
-    var r = new Response({age: 24, race: "White"});
+    var r = new Response({age: 24, race: "white"});
   	r.validate(function(err) {
   	  expect(err).to.not.exist;
       done();
     });
 
     // Checks that an empty age field does not createe an error
-    r = new Response({gender: "Male", race: "White"});
+    r = new Response({gender: "male", race: "white"});
   	r.validate(function(err) {
   	  expect(err).to.not.exist;
       done();
     });
 
     // Checks that an empty race field does not createe an error
-    r = new Response({gender: "Male", age: 24});
+    r = new Response({age: 24, gender: "male"});
   	r.validate(function(err) {
   	  expect(err).to.not.exist;
       done();
@@ -50,5 +50,14 @@ describe('response', function() {
     	expect(err).to.not.exist;
       done();
     });
+  });
+});
+
+
+// *** Type/Enum Validation Tests *** //
+// Checks that a Choices age field is a Number
+describe('response', function() {
+  it('should be invalid if a Choices age field is not a Number', function(done) {
+    // Checks that a number
   });
 });
