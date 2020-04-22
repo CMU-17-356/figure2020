@@ -12,7 +12,7 @@ var Response = models.Response;
 // ****************************** //
 // *** Basic Validation Tests *** //
 // ****************************** //
-// Checks that a valid Choice object has no errors
+// Checks that a valid Response object has no errors
 describe('response', function() {
   it('should be valid if no required fields are left empty', function(done) {
   	var r = new Response({age: 24, gender: "male", race: "white"});
@@ -61,9 +61,9 @@ describe('response', function() {
 // ********************************** //
 // *** Type/Enum Validation Tests *** //
 // ********************************** //
-// Checks that a Choices age field is a Number and within the proper range (0-122)
+// Checks that a Response's age field is a Number and within the proper range (0-122)
 describe('response', function() {
-  it('should be invalid if a Choice\'s age field is not a Number or out of range (0-122)', function(done) {
+  it('should be invalid if a Response\'s age field is not a Number or out of range (0-122)', function(done) {
     // Checks that a number age within range (0-122) does not create an error
     var r = new Response({age: 0, gender: "male", race: "white"});
   	r.validate(function(err) {
@@ -134,10 +134,10 @@ describe('response', function() {
   });
 });
 
-// Checks that a Choices gender field is one of the following string enums ['male', 'female', 'other']
+// Checks that a Response's gender field is one of the following string enums ['male', 'female', 'other']
 // Technically there capitalization should not matter but since this will be a select option it does not matter
 describe('response', function() {
-  it('should be invalid if a Choice\'s gender field is not one of the following string enums [\'male\', \'female\', \'other\']', function(done) {
+  it('should be invalid if a Response\'s gender field is not one of the following string enums [\'male\', \'female\', \'other\']', function(done) {
     // Checks that a valid gender does not create an error
     var r = new Response({age: 24, gender: "male", race: "white"});
   	r.validate(function(err) {
@@ -189,10 +189,10 @@ describe('response', function() {
   });
 });
 
-// Checks that a Choices race field is one of the following string enums ['white', 'african american', 'asian', 'hispanic', 'american indian', 'other']
+// Checks that a Response's race field is one of the following string enums ['white', 'african american', 'asian', 'hispanic', 'american indian', 'other']
 // Technically there capitalization should not matter but since this will be a select option it does not matter
 describe('response', function() {
-  it('should be invalid if a Choice\'s race field is not one of the following string enums [\'white\', \'african american\', \'asian\', \'hispanic\', \'american indian\', \'other\']', function(done) {
+  it('should be invalid if a Response\'s race field is not one of the following string enums [\'white\', \'african american\', \'asian\', \'hispanic\', \'american indian\', \'other\']', function(done) {
     // Checks that a valid race does not create an error
     var r = new Response({age: 24, gender: "male", race: "white"});
   	r.validate(function(err) {
