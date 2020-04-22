@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var expect = require('chai').expect;
 
 const models = require('./models.js');
+var Response = models.Response;
 var Choice = models.Choice;
 
 
@@ -12,7 +13,12 @@ var Choice = models.Choice;
 // Checks that a valid Choice object has no errors
 describe('choice', function() {
   it('should be valid if no required fields are left empty', function(done) {
-  	var c = new Choice({body: "Choice 1", responses: [{gender: "Male", age: 24, race: "White"}, {gender: "Female", age: 19, race: "Black/African American"}, {gender: "Other", age: 32, race: "Asian"}]});
+    // several valid response objects to be used for creating a choice
+    var r0 = new Response({gender: "Male", age: 24, race: "White"});
+    var r1 = new Response({gender: "Female", age: 19, race: "Black/African American"});
+    var r2 = new Response({gender: "Other", age: 32, race: "Asian"});
+
+  	var c = new Choice({body: "Choice 1", responses: [r0.id, r1.id, r2.id]});
   	c.validate(function(err) {
   		expect(err).to.not.exist;
   		done();
@@ -23,25 +29,32 @@ describe('choice', function() {
 // Checks that empty required fields create an error
 describe('choice', function() {
   it('should be invalid if a required field is left empty', function(done) {
+    // several valid response objects to be used for creating a choice
+    var r0 = new Response({gender: "Male", age: 24, race: "White"});
+    var r1 = new Response({gender: "Female", age: 19, race: "Black/African American"});
+    var r2 = new Response({gender: "Other", age: 32, race: "Asian"});
+
     // Checks that an empty body field creates an error
-    var c = new Choice({responses: [{gender: "Male", age: 24, race: "White"}, {gender: "Female", age: 19, race: "Black/African American"}, {gender: "Other", age: 32, race: "Asian"}]});
+    var c = new Choice({responses: [r0.id, r1.id, r2.id]});
   	c.validate(function(err) {
       expect(err.errors.body).to.exist;
       done();
     });
+  });
+});
 
-    // // Checks that an empty number_of_responses field creates an error
-    // c = new Choice({body: "Choice 1"});
-  	// c.validate(function(err) {
-    //   expect(err.errors.responses).to.exist;
-    //   done();
-    // });
+// Checks that empty non-required fields do not create an console.error;
+describe('choice', function() {
+  it('should be invalid if a required field is left empty', function(done) {
+    // several valid response objects to be used for creating a choice
+    var r0 = new Response({gender: "Male", age: 24, race: "White"});
+    var r1 = new Response({gender: "Female", age: 19, race: "Black/African American"});
+    var r2 = new Response({gender: "Other", age: 32, race: "Asian"});
 
-    // Checks that all empty required fields create an error
-    c = new Choice({});
+    // Checks that an empty responses field does not creates an error
+    c = new Choice({body: "Choice 1"});
   	c.validate(function(err) {
-    	expect(err.errors.body).to.exist;
-      // expect(err.errors.responses).to.exist;
+      expect(err).to.not.exist;
       done();
     });
   });

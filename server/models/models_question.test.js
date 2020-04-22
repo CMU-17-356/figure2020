@@ -29,7 +29,7 @@ describe('question', function() {
 // Checks that empty required fields create an error
 describe('question', function() {
   it('should be invalid if a required field is left empty', function(done) {
-    // several valid choice objects to be used for creating a question
+    // Several valid choice objects to be used for creating a question
     var c1 = new Choice({body: "Choice 1", responses: [{gender: "Male", age: 24, race: "White"}, {gender: "Female", age: 36, race: "Black/African American"}, {gender: "Other", age: 32, race: "Asian"}]});
     var c2 = new Choice({body: "Choice 2", responses: [{gender: "Female", age: 21, race: "Hispanic/Latino"}, {gender: "Other", age: 22, race: "Native Hawaiian/Other Pacific Islander"}, {gender: "Other", age: 14, race: "White"}]});
     var c3 = new Choice({body: "Choice 3", responses: [{gender: "Other", age: 17, race: "American Indian/Alaska Native"}, {gender: "Male", age: 84, race: "Asian"}, {gender: "Other", age: 28, race: "Black/African American"}]});
