@@ -69,7 +69,7 @@ describe('response', function() {
       expect(err).to.not.exist;
       done();
     });
-    r = new Response({ age: 24, gender: "male", race: "white"});
+    r = new Response({ age: "24", gender: "male", race: "white"});
     r.validate(function(err) {
       expect(err).to.not.exist;
       done();
@@ -93,9 +93,37 @@ describe('response', function() {
     });
 
     // Checks that a number age below the range creates an error
-
+    r = new Response({ age: -1, gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
+    r = new Response({ age: "-16", gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
+    r = new Response({ age: -24, gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
 
     // Checks that a number age above the range creates an error
-
+    r = new Response({ age: 123, gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
+    r = new Response({ age: "200", gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
+    r = new Response({ age: 2301, gender: "male", race: "white"});
+    r.validate(function(err) {
+      expect(err.errors.age).to.exist;
+      done();
+    });
   });
 });
