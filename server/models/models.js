@@ -38,7 +38,7 @@ choiceSchema.set('toJSON', {
 const responseSchema = new Schema({
   gender: {
     type: String,
-    // enum: ['', ''], //Add later when needed
+    enum: ['male', 'female', 'other'],
     required: false
   },
   age: {
@@ -47,7 +47,7 @@ const responseSchema = new Schema({
   },
   race: {
     type: String,
-    // enum: ['', ''], //Add later when needed
+    enum: ['white', 'african american', 'asian', 'hispanic', 'american indian', 'other'],
     required: false
   }
 });
