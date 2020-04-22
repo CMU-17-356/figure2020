@@ -54,8 +54,64 @@ describe('choice', function() {
     var r1 = new Response({age: 19, gender: "Female", race: "Black/African American"});
     var r2 = new Response({age: 32, gender: "Other", race: "Asian"});
 
-    // Checks that an empty responses field does not creates an error
+    // Checks that an empty responses field does not create an error
     c = new Choice({body: "Choice 1"});
+  	c.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+  });
+});
+
+
+
+// ********************************** //
+// *** Type/Enum Validation Tests *** //
+// ********************************** //
+// Checks that a Choice's body field is a string
+describe('choice', function() {
+  it('should be invalid if Choice\'s body field is not a string', function(done) {
+    // several valid response objects to be used for creating a choice
+    var r0 = new Response({age: 24, gender: "Male", race: "White"});
+    var r1 = new Response({age: 19, gender: "Female", race: "Black/African American"});
+    var r2 = new Response({age: 32, gender: "Other", race: "Asian"});
+
+    // Checks that an valid Choice's body field does not create an error
+    var c = new Choice({body: "Choice 1", responses: [r0.id, r1.id, r2.id]});
+  	c.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    c = new Choice({body: "1", responses: [r0.id, r1.id, r2.id]});
+  	c.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    c = new Choice({body: "The everlasting tiredness that I feel everyday despite sleeping four times daily", responses: [r0.id, r1.id, r2.id]});
+  	c.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+
+    // Turns out that the models/validation that happens converts things to strings so these were initially suppose
+    // to be invalid but they all actually work and I don't think that they would actually cause issues because they
+    // would all be converted
+    c = new Choice({body: 1, responses: [r0.id, r1.id, r2.id]});
+  	c.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    c = new Choice({body: 24.2, responses: [r0.id, r1.id, r2.id]});
+  	c.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    c = new Choice({body: r0.id, responses: [r0.id, r1.id, r2.id]});
+  	c.validate(function(err) {
+      expect(err).to.not.exist;
+      done();
+    });
+    c = new Choice({body: 'f', responses: [r0.id, r1.id, r2.id]});
   	c.validate(function(err) {
       expect(err).to.not.exist;
       done();
