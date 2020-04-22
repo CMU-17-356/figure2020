@@ -70,7 +70,7 @@ describe('choice', function() {
 // ********************************** //
 // Checks that a Choice's body field is a string
 describe('choice', function() {
-  it('should be invalid if Choice\'s body field is not a string', function(done) {
+  it('should be invalid if a Choice\'s body field is not a string', function(done) {
     // Several valid response objects to be used for creating a choice
     var r0 = new Response({age: 24, gender: "Male", race: "White"});
     var r1 = new Response({age: 19, gender: "Female", race: "Black/African American"});
