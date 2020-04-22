@@ -6,7 +6,8 @@
   "browser_action": {
     "default_popup": "index.html"
   },
-  "permissions": ["management"],
+  "permissions": ["management",
+                "http://104.42.96.156/*"],
   "chrome_url_overrides": {
     "newtab": "index.html"
   },

@@ -16,7 +16,7 @@ export class Ask extends Component {
   }
 
   componentDidMount() {
-    axios.get('/mostRecentQuestion')
+    axios.get('http://104.42.96.156/mostRecentQuestion')
       .then(res => {
         const resJson = res.data;
         this.setState({
@@ -29,7 +29,7 @@ export class Ask extends Component {
 
   switchPage = (i) => {
     let body = JSON.stringify({"gender": "female"});
-    fetch('/response/' + this.state.choiceIds[i], {
+    fetch('http://104.42.96.156/response/' + this.state.choiceIds[i], {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
