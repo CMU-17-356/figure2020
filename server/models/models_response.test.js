@@ -219,12 +219,12 @@ describe('response', function() {
       expect(err.errors.race).to.exist;
       done();
     });
-    r = new Response({ age: 24, gender: "male", race: 2});
+    r = new Response({age: "10-20", gender: "male", race: 2});
     r.validate(function(err) {
       expect(err.errors.race).to.exist;
       done();
     });
-    r = new Response({ age: 24, gender: "male", race: "dwarf"});
+    r = new Response({age: "10-20", gender: "male", race: "dwarf"});
     r.validate(function(err) {
       expect(err.errors.race).to.exist;
       done();
