@@ -5,8 +5,7 @@ dist: xenial
 sudo: required
 services:
   - docker
-install: travis_wait mvn install
-
+  
 env:
   global:
     - DOCKER_TLS_VERIFY="1"
