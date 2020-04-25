@@ -28,7 +28,6 @@ export class Ask extends Component {
   };
 
   switchPage = (i) => {
-    let body = JSON.stringify({"gender": "female"});
     fetch('http://104.42.96.156/response/' + this.state.choiceIds[i], {
       method: 'POST',
       headers: {

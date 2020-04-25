@@ -120,7 +120,7 @@ app.post("/response/:id", async (req,res) => {
 			_id: responseId,
 			gender: req.body.gender,
 			age: req.body.age,
-			ethnicity: req.body.ethnicity
+			race: req.body.ethnicity
 		});
 		await newResponse.save();
 
