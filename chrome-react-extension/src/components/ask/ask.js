@@ -35,7 +35,11 @@ export class Ask extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: body
+        body: JSON.stringify({
+          gender: this.props.gender,
+          age: this.props.age,
+          ethnicity: this.props.ethnicity,
+        })
     }).then(async (response) => {
       console.log(response.status);
       });
