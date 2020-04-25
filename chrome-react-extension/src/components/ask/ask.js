@@ -33,7 +33,7 @@ export class Ask extends Component {
       "age": this.props.age,
       "race": this.props.ethnicity
     };
-    fetch('http://104.42.96.156/addresponse/' + this.state.choiceIds[i], {
+    fetch('http://104.42.96.156/response/' + this.state.choiceIds[i], {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

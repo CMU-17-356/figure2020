@@ -113,7 +113,7 @@ app.post("/question", async (req,res) => {
 	}
 });
 
-app.post("/addresponse/:id", async (req,res) => {
+app.post("/response/:id", async (req,res) => {
 	try {
 		let responseId = new mongoose.Types.ObjectId();
 		const newResponse = new models.Response({
