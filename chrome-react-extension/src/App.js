@@ -26,7 +26,11 @@ class App extends Component{
     switch (this.state.page) {
       case 'ask':
         page = <Ask switchPage={this.switchPage} name={name}
-                    settingsPage={this.settingsPage}/>
+                    settingsPage={this.settingsPage}
+                    age={age}
+                    gender={gender}
+                    ethnicity={ethnicity}
+                    />
         break
       case 'response':
         page = <Response 

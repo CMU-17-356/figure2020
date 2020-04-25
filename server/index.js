@@ -118,7 +118,9 @@ app.post("/response/:id", async (req,res) => {
 		let responseId = new mongoose.Types.ObjectId();
 		const newResponse = new models.Response({
 			_id: responseId,
-			body: req.body
+			gender: req.body.gender,
+			age: req.body.age,
+			ethnicity: req.body.ethnicity
 		});
 		await newResponse.save();
 
