@@ -38,7 +38,6 @@ export class Response extends Component {
     };
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <button id="settings" onClick={this.props.settingsPage}><img src={settings} width="40px" height="40px"/></button>

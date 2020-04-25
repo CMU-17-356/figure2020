@@ -28,11 +28,10 @@ export class Ask extends Component {
   };
 
   switchPage = (i) => {
-    let categories = {
-      "gender": this.props.gender,
-      "age": this.props.age,
-      "race": this.props.ethnicity
-    };
+    var categories = {};
+    if (this.props.age !== "null" & this.props.age !== "") {categories.age = this.props.age}
+    if (this.props.gender !== "null" & this.props.gender !== "") {categories.gender = this.props.gender}
+    if (this.props.ethnicity !== "null" & this.props.ethnicity !== "") {categories.race = this.props.ethnicity}
     fetch('http://104.42.96.156/response/' + this.state.choiceIds[i], {
       method: 'POST',
       headers: {
