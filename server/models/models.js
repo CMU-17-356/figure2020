@@ -17,7 +17,7 @@ const responseSchema = new Schema({
   },
   race: {
     type: String,
-    enum: ['white', 'african american', 'asian', 'hispanic', 'american indian', 'other'],
+    enum: ['white', 'african', 'asian', 'hispanic', 'indian', 'other'],
     required: false
   }
 });
