@@ -28,18 +28,18 @@ export class Ask extends Component {
   };
 
   switchPage = (i) => {
-    let body = JSON.stringify({"gender": "female"});
+    let categories = {
+      "gender": this.props.gender,
+      "age": this.props.age,
+      "race": this.props.ethnicity
+    };
     fetch('http://104.42.96.156/response/' + this.state.choiceIds[i], {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-        body: JSON.stringify({
-          gender: this.props.gender,
-          age: this.props.age,
-          ethnicity: this.props.ethnicity,
-        })
+        body: JSON.stringify(categories)
     }).then(async (response) => {
       console.log(response.status);
       });
