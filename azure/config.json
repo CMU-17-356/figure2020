@@ -2,18 +2,18 @@
     "ConfigVersion": 3,
     "Driver": {
         "IPAddress": "",
-        "MachineName": "dronuts2020-team-d",
+        "MachineName": "figure2020",
         "SSHUser": "azureuser",
         "SSHPort": 22,
-        "SSHKeyPath": "/Users/tianyizhu/.docker/machine/machines/dronuts2020-team-d/id_rsa",
-        "StorePath": "/Users/tianyizhu/.docker/machine",
+        "SSHKeyPath": "/Users/Sankalp/.docker/machine/machines/figure2020/id_rsa",
+        "StorePath": "/Users/Sankalp/.docker/machine",
         "SwarmMaster": false,
         "SwarmHost": "tcp://0.0.0.0:3376",
         "SwarmDiscovery": "",
         "ClientID": "",
         "ClientSecret": "",
         "Environment": "AzurePublicCloud",
-        "SubscriptionID": "f95bb040-6504-4767-9aae-66f94edb26a7",
+        "SubscriptionID": "0c522b82-e002-47bc-bbaf-1885469d4ca2",
         "ResourceGroup": "cmu-17-356",
         "DockerPort": 2376,
         "Location": "westus",
@@ -71,19 +71,19 @@
             "IsExperimental": false
         },
         "AuthOptions": {
-            "CertDir": "/Users/tianyizhu/.docker/machine/certs",
-            "CaCertPath": "/Users/tianyizhu/.docker/machine/certs/ca.pem",
-            "CaPrivateKeyPath": "/Users/tianyizhu/.docker/machine/certs/ca-key.pem",
+            "CertDir": "/Users/Sankalp/.docker/machine/certs",
+            "CaCertPath": "/Users/Sankalp/.docker/machine/certs/ca.pem",
+            "CaPrivateKeyPath": "/Users/Sankalp/.docker/machine/certs/ca-key.pem",
             "CaCertRemotePath": "",
-            "ServerCertPath": "/Users/tianyizhu/.docker/machine/machines/dronuts2020-team-d/server.pem",
-            "ServerKeyPath": "/Users/tianyizhu/.docker/machine/machines/dronuts2020-team-d/server-key.pem",
-            "ClientKeyPath": "/Users/tianyizhu/.docker/machine/certs/key.pem",
+            "ServerCertPath": "/Users/Sankalp/.docker/machine/machines/figure2020/server.pem",
+            "ServerKeyPath": "/Users/Sankalp/.docker/machine/machines/figure2020/server-key.pem",
+            "ClientKeyPath": "/Users/Sankalp/.docker/machine/certs/key.pem",
             "ServerCertRemotePath": "",
             "ServerKeyRemotePath": "",
-            "ClientCertPath": "/Users/tianyizhu/.docker/machine/certs/cert.pem",
+            "ClientCertPath": "/Users/Sankalp/.docker/machine/certs/cert.pem",
             "ServerCertSANs": [],
-            "StorePath": "/Users/tianyizhu/.docker/machine/machines/dronuts2020-team-d"
+            "StorePath": "/Users/Sankalp/.docker/machine/machines/figure2020"
         }
     },
-    "Name": "dronuts2020-team-d"
+    "Name": "figure2020"
 }

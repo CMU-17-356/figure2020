@@ -16,7 +16,7 @@ export class Ask extends Component {
   }
 
   componentDidMount() {
-    axios.get('/mostRecentQuestion')
+    axios.get('http://104.42.96.156/mostRecentQuestion')
       .then(res => {
         const resJson = res.data;
         this.setState({
@@ -28,19 +28,17 @@ export class Ask extends Component {
   };
 
   switchPage = (i) => {
-    // TODO: has to replace the data with actual saved data in the browser
-    let reqBody = JSON.stringify({
-      "gender": "female",
-      "age": "20-30",
-      "race": "asian"
-    });
-    fetch('/response/' + this.state.choiceIds[i], {
+    var categories = {};
+    if (this.props.age !== "null" & this.props.age !== "") {categories.age = this.props.age}
+    if (this.props.gender !== "null" & this.props.gender !== "") {categories.gender = this.props.gender}
+    if (this.props.ethnicity !== "null" & this.props.ethnicity !== "") {categories.race = this.props.ethnicity}
+    fetch('http://104.42.96.156/response/' + this.state.choiceIds[i], {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: reqBody
+        body: JSON.stringify(categories)
     }).then(async (response) => {
       console.log(response.status);
     });

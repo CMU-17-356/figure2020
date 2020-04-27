@@ -26,7 +26,7 @@ export class Response extends Component {
   }
 
     componentDidMount() {
-    axios.get('/mostRecentQuestionAnswers')
+    axios.get('http://104.42.96.156/mostRecentQuestionAnswers')
       .then(res => {
         const question = res.data;
         this.setState({
@@ -38,8 +38,9 @@ export class Response extends Component {
     };
 
   render() {
-    console.log(this.state)
     return (
+      <div>
+        <button id="settings" onClick={this.props.settingsPage}><img src={settings} width="40px" height="40px"/></button>
       <div id="containResponse" >
         <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center"}}>
           Hello, {this.props.name}! <br></br>
@@ -84,6 +85,7 @@ export class Response extends Component {
             />
           </div>
         </Card>
+      </div>
       </div>
     )
   }
