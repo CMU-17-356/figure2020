@@ -9,6 +9,7 @@ export class Ask extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      questionId: null,
       question: null,
       choices: null,
       choiceIds: null
@@ -20,6 +21,7 @@ export class Ask extends Component {
       .then(res => {
         const resJson = res.data;
         this.setState({
+          questionId: resJson.questionId,
           question: resJson.questionBody,
           choices: resJson.choiceNames,
           choiceIds: resJson.choiceIds
@@ -41,8 +43,9 @@ export class Ask extends Component {
         body: JSON.stringify(categories)
     }).then(async (response) => {
       console.log(response.status);
+      localStorage.setItem('answered', 'true');
+      this.props.switchPage();
     });
-    this.props.switchPage();
   }
 
   render() {
