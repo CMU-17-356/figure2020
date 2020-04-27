@@ -38,29 +38,30 @@ export class Questions extends Component {
 
     if (totalQuestions === 0) return null;
 
-    const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
+    const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? '' : ''].join(' ').trim();
     return (
-      <div className="container mb-5">
-        <div className="row d-flex flex-row py-5">
-          <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
-            <div className="d-flex flex-row align-items-center">
-
+      <div id="contain">
+          <div className="w-100 flex-row flex-wrap align-items-center">
+            <div className="flex-row align-items-center">
               <h2 className={headerClass}>
-                <strong className="text-secondary">{totalQuestions}</strong> Total Questions
+                <strong>{totalQuestions}</strong> Total Questions
               </h2>
               {
                 currentPage && (
-                  <span className="current-page d-inline-block h-100 pl-4 text-secondary">
+                  <span className="">
                   Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
                 </span>
                 )
               }
             </div>
-            <div className="d-flex flex-row py-4 align-items-center">
-              <Pagination totalRecords={totalQuestions} pageLimit={12} pageNeighbours={1} onPageChanged={this.onPageChanged} />
-            </div>
           </div>
+        <br></br>
+        <div id="questions">
           { currentQuestions.map(question => <QuestionCard question={question} />) }
+        </div>
+        <br></br>
+        <div>
+          <Pagination totalRecords={totalQuestions} pageLimit={9} pageNeighbours={1} onPageChanged={this.onPageChanged} />
         </div>
       </div>
     );
