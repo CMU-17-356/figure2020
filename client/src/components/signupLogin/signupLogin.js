@@ -28,7 +28,7 @@ export class SignupLogin extends Component {
 
   render() {
     if (this.state.redirect === true){
-      return <Redirect to='/menu'/>
+      return <Redirect to=''/>
     }
 
     return (

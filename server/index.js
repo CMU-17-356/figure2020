@@ -288,6 +288,22 @@ app.get("/questionData/:id", async (req, res) => {
 	}
 });
 
+app.post('/auth', async (req, res) => {
+	try {
+		await models.Password.findOne().exec((err, passwordObj) => {
+			if (err) {
+				res.status(500).send(err);
+			} else if (passwordObj.password === req.body.password) {
+				res.status(200).json();
+			} else {
+				res.status(403).send();
+			}
+		});
+	} catch (err) {
+		res.status(500).send(err)
+	}
+});
+
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
 	response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));

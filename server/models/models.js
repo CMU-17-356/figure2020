@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+const passwordSchema = new Schema({
+  password: {type: String, required: true}
+});
 /********************/
 /*  Response Model  */
 /********************/
@@ -70,4 +74,5 @@ module.exports = {
   Question: Question,
   Choice: Choice,
   Response: Response,
+  Password: mongoose.model('password', passwordSchema)
 };
