@@ -5,6 +5,7 @@ import Ask from './components/ask/ask.js';
 import Response from './components/response/response.js';
 import Settings from './components/settings/settings.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 var name = localStorage.getItem('name') || "friend"
 var age = localStorage.getItem('age') || null
@@ -12,16 +13,38 @@ var gender = localStorage.getItem('gender') || null
 var ethnicity = localStorage.getItem('ethnicity') || null
 
 
-class App extends Component{
-  constructor() {
-    super();
+class App extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      page: "ask"
+      page: null
     }
   }
 
+  componentDidMount() {
+    axios.get("http://104.42.96.156/mostRecentQuestion")
+      .then(res => {
+        const resJson = res.data;
+        const questionId = resJson.questionId;
+        const answered = localStorage.getItem('answered');
+        const currentId = localStorage.getItem('currId');
+        // initial state: no question ever asked, or there is a new question that's different
+        // from the current one
+        if (currentId === null || questionId !== currentId) {
+          this.setState({page : "ask"});
+          localStorage.setItem('currId', questionId);
+          localStorage.setItem('answered', 'false');
+        }
+        if (questionId === currentId && answered === "false") {
+          this.setState({page: "ask"});
+        }
+        if (questionId === currentId && answered === "true") {
+          this.setState({page: "response"});
+        }
+      });
+  }
 
-  render () {
+  render() {
     let page = null
     switch (this.state.page) {
       case 'ask':

@@ -166,6 +166,7 @@ app.get("/mostRecentQuestion", async (req, res) => {
 			choiceBodies.push(elem.body);
 		});
 		let resJson = {
+			questionId: question[0]._id,
 			questionBody: question[0].body,
 			choiceNames: choiceBodies,
 			choiceIds: choiceIds
