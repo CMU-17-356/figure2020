@@ -41,7 +41,7 @@ export class Ask extends Component {
         body: JSON.stringify(categories)
     }).then(async (response) => {
       console.log(response.status);
-      });
+    });
     this.props.switchPage();
   }
 
