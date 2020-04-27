@@ -1,0 +1,19 @@
+.page-item.active .page-link {
+    z-index: 3;
+    color: black;
+    font-weight: bold;
+    background-color: rgba(254,254,254,.3);
+    border-color: black;
+}
+
+.page-item .page-link {
+    z-index: 3;
+    color: black;
+    font-weight: lighter;
+    background-color: rgba(254,254,254,.3);
+    border-color: black;
+}
+
+.page-item .page-link:hover { 
+	background-color: rgba(0,0,0,.3);
+	color: white; }

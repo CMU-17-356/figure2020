@@ -1,6 +1,6 @@
 #contain {
 	margin-top: 30px;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
 }
 
 #questions {
@@ -11,8 +11,13 @@
 
 }
 
-.cards:hover {
-  background-color: rgba(0,0,0,.35);
+.card {
+  color: black;
+  background-color: rgba(245,245,245,.4);
+}
+.card:hover {
+  background-color: rgba(0,0,0,.4);
+  color: white;
   border-radius: 15px;
 }
 
