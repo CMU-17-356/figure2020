@@ -24,7 +24,7 @@ export class Response extends Component {
         choices: null,
         counts: null,
         category: "totals",
-        others: ["race", "gender", "age"]
+        all: ["totals", "race", "gender", "age"]
       };
     }
   }
@@ -73,8 +73,18 @@ export class Response extends Component {
 
   render() {
     var categories = []
-    for (let i in this.state.others) {
-      let choice = this.state.others[i];
+    for (let i in this.state.all) {
+      let choice = this.state.all[i];
+      if (choice === this.state.category) {
+      categories.push(
+        <div onClick={() => this.switchCategory(choice)}>
+            <Card style={{ "backgroundColor": "rgba(0,0,0,.4)",width: '9rem', height: '3rem', "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
+              <Card.Body style={{fontWeight: "800"}}className="contains">
+                <Card.Text>{choice}</Card.Text>
+              </Card.Body>
+            </Card>
+        </div>
+      )} else {
       categories.push(
         <div onClick={() => this.switchCategory(choice)}>
             <Card style={{ width: '9rem', height: '3rem', "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
@@ -83,7 +93,7 @@ export class Response extends Component {
               </Card.Body>
             </Card>
         </div>
-      )
+      )}
     }
     return (
       <div id="containResponse" >
@@ -91,10 +101,9 @@ export class Response extends Component {
         <Card style={{ color:'black', margin: "25px", width: '13rem', height: '22rem', "backgroundColor": "rgba(245, 245, 245, .2)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
           <br></br>
           <div style={{"color":"black", "font-size": "25px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "marginBottom":"10px"}}>
-            Seeing response by {this.state.category}
+            View response by
           </div>
           <div id="responses">
-          <br></br>View response by
           {categories}
           </div>
         </Card>
