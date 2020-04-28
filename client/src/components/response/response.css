@@ -1,7 +1,43 @@
+
 #containResponse {
-  position: fixed;
+	display: flex;
+	justify-content: center;
+	margin: 30px;
+	margin-bottom: 40px;
+
+}
+
+.contains {
+  position: relative;
   top: 50%;
   left: 50%;
   /* bring your own prefixes */
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -65%);
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-weight: 550;
+  font-size: 14px;
+
+}
+
+#responses {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+
+}
+
+
+.card {
+	margin: 8px;
+}
+
+
+a:hover {
+	text-decoration: none;
+	font-weight: bold;
+
 }
