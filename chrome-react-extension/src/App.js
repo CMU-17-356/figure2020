@@ -17,7 +17,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: null
+      page: null,
+      return: null
     }
   }
 
@@ -80,7 +81,7 @@ class App extends Component {
 
   landingPage = () => {
     this.setState({
-      page: "ask"
+      page: this.state.return
     });
     name = localStorage.getItem('name') || "friend"
     age = localStorage.getItem('age') || null
@@ -90,7 +91,8 @@ class App extends Component {
 
   settingsPage = () => {
     this.setState({
-      page: "settings"
+      page: "settings",
+      return: this.state.page
     });
   };
 
