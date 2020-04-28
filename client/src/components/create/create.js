@@ -65,14 +65,12 @@ export class Create extends Component {
 
   render() {
     return (
-      <div className="container" style={{"marginTop":"60px"}}>
+      <div className="container" style={{"marginTop":"15px"}}>
       <div style={{"display": "flex", "flexDirection":"row", "justifyContent":"center"}}>
-      <Card style={{"width":"400px","backgroundColor": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
-      <Card.Body><h1>Enter Question</h1></Card.Body>
-      </Card></div>
-      <br></br>
+      <h1>New Question</h1>
+      </div>
       <div className="c my-4 text-left">
-        <Card style={{"backgroundColor": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
+        <Card style={{color:"black","backgroundColor": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
           <Card.Body >
             <form onSubmit={this.handleSubmit}>
               <label>Question:</label>
@@ -85,7 +83,7 @@ export class Create extends Component {
                 this.state.response.map((inputField, index) => (
                   <div className="form-row mt-3">
                     <div className="form-group col">
-                      <label>Response:</label>
+                      <label>Responses:</label>
                       <input
                         type="text"
                         className="form-control"
