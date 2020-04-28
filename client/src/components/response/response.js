@@ -110,7 +110,7 @@ export class Response extends Component {
 
         </div>
 
-        <Card style={{margin: "25px", "backgroundColor": "rgba(245, 245, 245, .5)","color": "black", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px", "width": "800px"}}>
+        <Card style={{margin: "25px", "backgroundColor": "rgba(245, 245, 245, .5)","color": "black", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px", "width": "700px"}}>
           <div style={{ "fontSize": "25px", "fontWeight": "900px", "textShadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "textAlign": "center"}}>
             <br></br>{this.state.question}
           </div>
