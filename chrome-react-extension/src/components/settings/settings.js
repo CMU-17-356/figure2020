@@ -64,8 +64,8 @@ export class Settings extends Component {
                 <option value=""></option>
                 <option value="white">White</option>
                 <option value="hispanic">Hispanic</option>
-                <option value="african">African American</option>
-                <option value="indian">American Indian</option>
+                <option value="african american">African American</option>
+                <option value="american indian">American Indian</option>
                 <option value="asian">Asian</option>
                 <option value="other">Other</option>
             </select>
