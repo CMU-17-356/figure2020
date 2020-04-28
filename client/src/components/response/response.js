@@ -204,7 +204,7 @@ export class Response extends Component {
       categories.push(
         <div onClick={() => this.switchCategory(choice)}>
             <Card style={{ "backgroundColor": "rgba(0,0,0,.4)",width: '9rem', height: '3rem', "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
-              <Card.Body style={{fontWeight: "800"}}className="contains">
+              <Card.Body style={{fontWeight: "800", color: "white"}}className="contains">
                 <Card.Text>{choice}</Card.Text>
               </Card.Body>
             </Card>
