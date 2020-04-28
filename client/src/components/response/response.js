@@ -6,10 +6,6 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 
 
-const legendOpts = {
-  display: false
-};
-
 
 export class Response extends Component {
   constructor(props) {
@@ -110,13 +106,14 @@ export class Response extends Component {
 
         </div>
 
-        <Card style={{margin: "25px", "backgroundColor": "rgba(245, 245, 245, .5)","color": "black", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px", "width": "700px"}}>
+        <Card style={{margin: "25px", "backgroundColor": "rgba(245, 245, 245, .5)","color": "black", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px", "width": "730px"}}>
           <div style={{ "fontSize": "25px", "fontWeight": "900px", "textShadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "textAlign": "center"}}>
             <br></br>{this.state.question}
           </div>
-          <div style={{"margin":"30px"}}>
+          {this.state.category === "totals" ?
+          <div style={{"margin":"25px"}}>
             <Bar
-              legend={legendOpts}
+              legend={{display: false}}
               data={{
                 labels: this.state.choices,
                 datasets: [
@@ -148,7 +145,174 @@ export class Response extends Component {
                 }
               }}
             />
-          </div>
+          </div> : null }
+          {this.state.category === "gender" ? 
+          <div style={{"margin":"25px"}}>
+          <Bar 
+          data={ 
+            {datasets:[{
+                label: 'females',
+                backgroundColor: 'rgba(255, 115, 192, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:[1, 4, 2,3]
+              },
+              {
+                label: 'males',
+                backgroundColor: 'rgba(52, 210, 235, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              }],
+            labels: this.state.choices
+          }}
+          options={{
+           scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: { display:false }
+                }],
+                yAxes: [{
+                   stacked: true,
+                   ticks: {
+                    beginAtZero: true,
+                    }
+                }]
+            }}} />
+          </div> : null}
+
+          {this.state.category === "age" ? 
+          <div style={{"margin":"25px"}}>
+          <Bar 
+          data={ 
+            {datasets:[{
+                label: '<10',
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:[1, 4, 2,3]
+              },
+              {
+                label: '10-20',
+                backgroundColor: 'rgba(38, 8, 51, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },              
+              {
+                label: '20-30',
+                backgroundColor: 'rgba(100, 30, 120, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },
+              {
+                label: '30-40',
+                backgroundColor: 'rgba(150, 60, 200, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },
+              {
+                label: '40-50',
+                backgroundColor: 'rgba(190, 100, 225, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },
+              {
+                label: '50-60',
+                backgroundColor: 'rgba(221, 153, 242, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },
+              {
+                label: '60+',
+                backgroundColor: 'rgba(236, 205, 250, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              }],
+            labels: this.state.choices
+          }}
+          options={{
+           scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: { display:false }
+                }],
+                yAxes: [{
+                   stacked: true,
+                   ticks: {
+                    beginAtZero: true,
+                    }
+                }]
+            }}} />
+          </div> : null}
+
+          {this.state.category === "race" ? 
+          <div style={{"margin":"25px"}}>
+          <Bar 
+          data={ 
+            {datasets:[{
+                label: 'White',
+                backgroundColor: 'rgba(245, 138, 66, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:[1, 4, 2,3]
+              },
+              {
+                label: 'African American',
+                backgroundColor: 'rgba(117, 219, 86, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },              
+              {
+                label: 'Asian',
+                backgroundColor: 'rgba(86, 219, 219, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },
+              {
+                label: 'Hispanic',
+                backgroundColor: 'rgba(167, 88, 224, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },
+              {
+                label: 'American Indian',
+                backgroundColor: 'rgba(224, 88, 151, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              },
+              {
+                label: 'Other',
+                backgroundColor: 'rgba(196, 20, 43, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data:  [2, 4, 2,1]
+              }],
+            labels: this.state.choices
+          }}
+          options={{
+           scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: { display:false }
+                }],
+                yAxes: [{
+                   stacked: true,
+                   ticks: {
+                    beginAtZero: true,
+                    }
+                }]
+            }}} />
+          </div> : null}
         </Card>
       </div>
     )
