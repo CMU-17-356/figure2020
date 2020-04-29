@@ -44,7 +44,7 @@ export class Questions extends Component {
           <div className="w-100 flex-row flex-wrap align-items-center">
             <div className="flex-row align-items-center">
               <h2 className={headerClass}>
-                <strong>{totalQuestions}</strong> Total Questions
+                <strong>{totalQuestions}</strong> Total {totalQuestions === 1 ? "Question" : "Questions"}
               </h2>
               {
                 currentPage && (

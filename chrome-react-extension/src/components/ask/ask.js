@@ -46,6 +46,7 @@ export class Ask extends Component {
     } else {
       categories.race = "unknown"
     }
+    console.log(categories)
     fetch('http://104.42.96.156/response/' + this.state.choiceIds[i], {
       method: 'POST',
       headers: {

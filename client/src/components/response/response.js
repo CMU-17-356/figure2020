@@ -320,14 +320,14 @@ export class Response extends Component {
           <Bar 
           data={ 
             {datasets:[{
-                label: 'females',
+                label: 'female',
                 backgroundColor: 'rgba(255, 115, 192, 0.5)',
                 borderColor: 'rgba(0, 0, 0, 1)',
                 borderWidth: 2,
                 data: this.state.gender_female
               },
               {
-                label: 'males',
+                label: 'male',
                 backgroundColor: 'rgba(52, 210, 235, 0.5)',
                 borderColor: 'rgba(0, 0, 0, 1)',
                 borderWidth: 2,
