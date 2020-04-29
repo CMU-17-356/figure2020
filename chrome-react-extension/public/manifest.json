@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "figure",
+  "name": "figure",
   "version": "1.0",
   "manifest_version": 2,
   "browser_action": {
@@ -10,6 +10,10 @@
                 "http://104.42.96.156/*"],
   "chrome_url_overrides": {
     "newtab": "index.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
   },
   "content_security_policy": "script-src 'self' 'sha256-OszmLM+w39Dhbyhsy44fcN2NAw5A3ARCfaJdO0SiW8o='; object-src 'self'"
 }
