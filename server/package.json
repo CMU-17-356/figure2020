@@ -10,7 +10,7 @@
     "start": "node index.js",
     "jest-test": "jest --passWithNoTests",
     "extension-test": "npx mocha extension_test.js",
-    "test": "npm-run-all jest-test extension-test"
+    "test": "jest-test"
   },
   "repository": {
     "type": "git",
