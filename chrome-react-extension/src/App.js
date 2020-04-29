@@ -84,9 +84,9 @@ class App extends Component {
       page: this.state.return
     });
     name = localStorage.getItem('name') || "friend"
-    age = localStorage.getItem('age') || null
-    gender = localStorage.getItem('gender') || null
-    ethnicity = localStorage.getItem('ethnicity') || null
+    age = localStorage.getItem('age') || ""
+    gender = localStorage.getItem('gender') || ""
+    ethnicity = localStorage.getItem('ethnicity') || ""
   };
 
   settingsPage = () => {
