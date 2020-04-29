@@ -27,6 +27,9 @@ export class Response extends Component {
         all: ["totals", "race", "gender", "age"],
         gender_male: [],
         gender_female: [],
+        gender_nonbinary: [],
+        gender_other: [],
+        gender_unknown: [],
         age_10: [],
         age_10_20: [],
         age_20_30: [],
@@ -34,12 +37,14 @@ export class Response extends Component {
         age_40_50: [],
         age_50_60: [],
         age_60: [],
+        age_unknown: [],
         race_white: [],
         race_african_american: [],
         race_asian: [],
         race_hispanic: [],
         race_american_indian: [],
         race_other: [],
+        race_unknown: []
       };
     }
   }
@@ -61,6 +66,9 @@ export class Response extends Component {
         console.log(question)
         var gender_male = [];
         var gender_female = [];
+        var gender_nonbinary = [];
+        var gender_other = [];
+        var gender_unknown = [];
         var age_10 = [];
         var age_10_20 = [];
         var age_20_30 = [];
@@ -68,27 +76,41 @@ export class Response extends Component {
         var age_40_50 = [];
         var age_50_60 = [];
         var age_60 = [];
+        var age_unknown = [];
         var race_white = [];
         var race_african_american = [];
         var race_asian = [];
         var race_hispanic = [];
         var race_american_indian = [];
         var race_other = [];
+        var race_unknown = [];
         for (let i in this.state.choices) {
           let d = question[i][this.state.choices[i]]
 
           var male = 0
           var female = 0
+          var nonbinary = 0
+          var other = 0
+          var unknown = 0
           let gender = d["gender"]
           for (let i in gender){
             if (gender[i]["_id"] === "male") {
               male = gender[i]["count"]
             } else if (gender[i]["_id"] === "female") {
               female = gender[i]["count"]
+            } else if (gender[i]["_id"] === "nonbinary") {
+              nonbinary = gender[i]["count"]
+            } else if (gender[i]["_id"] === "other") {
+              other = gender[i]["count"]
+            } else if (gender[i]["_id"] === "unknown") {
+              unknown = gender[i]["count"]
             }
           }
           gender_male.push(male)
           gender_female.push(female)
+          gender_nonbinary.push(nonbinary)
+          gender_other.push(other)
+          gender_unknown.push(unknown)
 
           var a_10 = 0
           var a_10_20 = 0
@@ -97,6 +119,7 @@ export class Response extends Component {
           var a_40_50 = 0
           var a_50_60 = 0
           var a_60 = 0
+          var unknown = 0
           let age = d["age"]
           for (let i in age){
             if (age[i]["_id"] === "<10") {
@@ -113,6 +136,8 @@ export class Response extends Component {
               a_50_60 = age[i]["count"]
             } else if (age[i]["_id"] === "60+") {
               a_60 = age[i]["count"]
+            } else if (age[i]["_id"] === "unknown") {
+              unknown = age[i]["count"]
             }
           }
           age_10.push(a_10)
@@ -122,6 +147,7 @@ export class Response extends Component {
           age_40_50.push(a_40_50)
           age_50_60.push(a_50_60)
           age_60.push(a_60)
+          age_unknown.push(unknown)
 
           var white = 0
           var african_american = 0
@@ -129,6 +155,7 @@ export class Response extends Component {
           var hispanic = 0
           var american_indian = 0
           var other = 0
+          var unknown = 0
           let race = d["race"]
           for (let i in race){
             if (race[i]["_id"] === "white") {
@@ -143,6 +170,8 @@ export class Response extends Component {
               american_indian = race[i]["count"]
             } else if (race[i]["_id"] === "other") {
               other = race[i]["count"]
+            } else if (race[i]["_id"] === "unknown") {
+              unknown = race[i]["count"]
             }
           }
           race_white.push(white)
@@ -151,10 +180,14 @@ export class Response extends Component {
           race_hispanic.push(hispanic)
           race_american_indian.push(american_indian)
           race_other.push(other)
+          race_unknown.push(unknown)
         }
         this.setState({
           gender_male: gender_male,
           gender_female: gender_female,
+          gender_nonbinary: gender_nonbinary,
+          gender_other: gender_other,
+          gender_unknown: gender_unknown,
           age_10: age_10,
           age_10_20: age_10_20,
           age_20_30: age_20_30,
@@ -162,12 +195,14 @@ export class Response extends Component {
           age_40_50: age_40_50,
           age_50_60: age_50_60,
           age_60: age_60,
+          age_unknown: age_unknown,
           race_white: race_white,
           race_african_american: race_african_american,
           race_hispanic: race_hispanic,
           race_asian: race_asian,
           race_american_indian: race_american_indian,
-          race_other: race_other
+          race_other: race_other,
+          race_unknown: race_unknown
         });
       })
   };
@@ -223,7 +258,7 @@ export class Response extends Component {
     return (
       <div id="containResponse" >
         <div>
-        <Card style={{ color:'black', margin: "25px", width: '13rem', height: '22rem', "backgroundColor": "rgba(245, 245, 245, .2)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
+        <Card style={{ color:'black',  width: '13rem', height: '22rem', "backgroundColor": "rgba(245, 245, 245, .2)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
           <br></br>
           <div style={{"color":"black", "font-size": "25px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "marginBottom":"10px"}}>
             View response by
@@ -233,14 +268,14 @@ export class Response extends Component {
           </div>
         </Card>
         <Link to={{pathname: '/'}}>
-        <Card style={{ color:'black', margin: "25px", width: '13rem', "backgroundColor": "rgba(245, 245, 245, .2)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
+        <Card style={{ color:'black', marginTop: "20px", width: '13rem', "backgroundColor": "rgba(245, 245, 245, .2)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px"}}>
         <Card.Body>Return to Questions</Card.Body>
         </Card>
         </Link>
 
         </div>
 
-        <Card style={{margin: "25px", "backgroundColor": "rgba(245, 245, 245, .5)","color": "black", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px", "width": "730px"}}>
+        <Card style={{marginLeft: "25px", "backgroundColor": "rgba(245, 245, 245, .5)","color": "black", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "borderRadius": "15px", "width": "830px"}}>
           <div style={{ "fontSize": "25px", "fontWeight": "900px", "textShadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center", "textAlign": "center"}}>
             <br></br>{this.state.question}
           </div>
@@ -297,6 +332,27 @@ export class Response extends Component {
                 borderColor: 'rgba(0, 0, 0, 1)',
                 borderWidth: 2,
                 data: this.state.gender_male
+              },
+              {
+                label: 'non-binary',
+                backgroundColor: 'rgba(186, 52, 235, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data: this.state.gender_nonbinary
+              },
+              {
+                label: 'other',
+                backgroundColor: 'rgba(58, 235, 52, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data: this.state.gender_other
+              },
+              {
+                label: 'unknown',
+                backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data: this.state.gender_unknown
               }],
             labels: this.state.choices
           }}
@@ -367,6 +423,13 @@ export class Response extends Component {
                 borderColor: 'rgba(0, 0, 0, 1)',
                 borderWidth: 2,
                 data: this.state.age_60
+              },
+              {
+                label: 'unknown',
+                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data: this.state.age_unknown
               }],
             labels: this.state.choices
           }}
@@ -430,7 +493,15 @@ export class Response extends Component {
                 borderColor: 'rgba(0, 0, 0, 1)',
                 borderWidth: 2,
                 data:  this.state.race_other
-              }],
+              },
+              {
+                label: 'Unknown',
+                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                data: this.state.race_unknown
+              }]
+              ,
             labels: this.state.choices
           }}
           options={{
