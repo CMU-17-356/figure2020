@@ -4,6 +4,7 @@
 import React, {Component} from "react";
 import { Button, Card } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom';
+import './signupLogin.css';
 
 
 /*************************/
@@ -32,8 +33,8 @@ export class SignupLogin extends Component {
     }
 
     return (
-      <div style={{display: "flex", "justifyContent": "center", "marginTop": "60px"}}>
-        <Card style={{ width: '45rem', margin: "10px", "background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
+      <div id="signingUp" style={{display: "flex", "justifyContent": "center", "marginTop": "60px"}}>
+        <Card style={{color:"black", width: '30rem', "background-color": "rgba(245, 245, 245, .45)", "borderStyle": "solid", "borderWidth": "1px", "borderColor": "#FFF4F9", "border-radius": "15px"}}>
           <Card.Body>
             {this.props.user === "false" ?
               (<div>
@@ -50,7 +51,7 @@ export class SignupLogin extends Component {
 
                   <Button id="loginButton" variant="outline-dark" size="lg" onClick={this.login}>Submit</Button>
 
-                </form><br/><Button variant="outline-dark" size="lg"><a href="/" style={{color: "black"}}>Return To Menu</a></Button>
+                </form><br/><Button variant="outline-dark" size="lg"><a href="/">Return To Menu</a></Button>
               </div>): (<div>
                 <Button id="logoutbutton" variant="outline-dark" size="lg" onClick={this.logout}>Logout</Button> </div>)}
           </Card.Body>
