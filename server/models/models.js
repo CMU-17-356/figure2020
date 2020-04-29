@@ -11,17 +11,17 @@ const passwordSchema = new Schema({
 const responseSchema = new Schema({
   age: {
     type: String,
-    enum: ['<10', '10-20', '20-30', '30-40', '40-50', '50-60', '60+'],
+    enum: ['<10', '10-20', '20-30', '30-40', '40-50', '50-60', '60+', "unknown"],
     required: false
   },
   gender: {
     type: String,
-    enum: ['male', 'female', 'nonbinary', 'other'],
+    enum: ['male', 'female', 'nonbinary', 'other', "unknown"],
     required: false
   },
   race: {
     type: String,
-    enum: ['white', 'african american', 'asian', 'hispanic', 'american indian', 'other'],
+    enum: ['white', 'african american', 'asian', 'hispanic', 'american indian', 'other', "unknown"],
     required: false
   }
 });
