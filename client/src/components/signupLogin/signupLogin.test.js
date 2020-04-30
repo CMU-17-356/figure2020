@@ -1,17 +1,15 @@
-// var mongoose = require('mongoose');
-// var expect = require('chai').expect;
-const puppeteer = require('puppeteer');
-
 /*************************/
 /*   Import Statements   */
 /*************************/
 import React, {Component} from "react";
-import { Button, Card } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-import './signupLogin.css';
+// import './signupLogin.css';
+import { render } from '@testing-library/react';
 import SignupLogin from "./signupLogin";
+import Create from "../create/create"
 
-// address = 'http://104.42.96.156/'  
+const puppeteer = require('puppeteer');
   
 describe('User Login Test', () => {
     let browser
@@ -33,26 +31,26 @@ describe('User Login Test', () => {
     })
 
     test('User cannot login with incorrect password', async () => {
+        const { getByText } = render(<SignupLogin />);
         await page.goto('http://104.42.96.156/login');
-        // await page.waitForSelector('#Login');
         await page.click('input[name=password]');
         await page.type('input[name=password]', 'thisIsNotOurPassword');
-        await page.click('#Submit');
-
-        const textElement = getByText(/Incorrect password/i);
-        expect(textElement).toBeInTheDocument();
+        await page.click('#loginButton');
+        await page.waitForFunction(
+            'document.querySelector("body").innerText.includes("Incorrect password.")'
+        );
+        browser.close();
     }, 30000);
 
-    // Test the headers
     test('Check for correct password', async () => {
         await page.goto('http://104.42.96.156/login');
-        // await page.waitForSelector('#Login');
         await page.click('input[name=password]');
         await page.type('input[name=password]', 'thisIsOurPassword');
-        await page.click('#Submit');
-
-        const textElement = getByText(/Total Questions/i);
-        expect(textElement).toBeInTheDocument();
+        await page.click('#loginButton');
+        await page.waitForFunction(
+            'document.querySelector("body").innerText.includes("Total Questions")'
+        );
+        browser.close();
     }, 30000);
 
 });
