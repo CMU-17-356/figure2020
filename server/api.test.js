@@ -74,6 +74,7 @@ describe("Testing Question API ends", function () {
 			.send(data);
 
 		expect(response.status).toBe(200);
+		console.log(response.status);
 	});
 });
 
