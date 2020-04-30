@@ -20,6 +20,8 @@ script:
   - docker-compose --file docker-compose.prod.yml build
   - cd ./server && npm test
   - cd ..
+  - cd ./client && npm test
+  - cd ..
 
 deploy:
   skip_cleanup: true
