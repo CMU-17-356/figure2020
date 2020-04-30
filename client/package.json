@@ -6,6 +6,7 @@
     "@material-ui/lab": "^4.0.0-alpha.45",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "@testing-library/jest-dom": "^4.2.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
@@ -52,5 +53,7 @@
   },
   "proxy": "http://0.0.0.0:80",
   "secure": false,
-  "devDependencies": {}
+  "devDependencies": {
+    "puppeteer": "^2.1.1"
+  }
 }
