@@ -55,10 +55,19 @@ describe("Testing Question API ends", function () {
 	 * Posting a question should return a proper response
 	 */
 	let data = {
-		"body": "What is your favorite fruit?",
-    "choices": [{choice: "Apple"}, {choice: "Banana"}, {choice: "Tomato"}, {choice: "Other"}],
+		"body": 'What is your favorite fruit?',
+    "choices": [],
 		"date_asked": new Date().toJSON(),
   }
+	let fruits = ["Apples", "Bananas", "Tomatos", "Other"]
+
+	fruits.forEach(elem => {
+		data.choices.push({
+			"choice": elem,
+		});
+	});
+
+	console.log(data);
 
 	// it('post /question', function (done) {
   //   supertest(app)
@@ -73,7 +82,7 @@ describe("Testing Question API ends", function () {
 
 		const response = await supertest(app)
 			.post('/question')
-			.send(JSON.stringify(data));
+			.send(data);
 
 		expect(response.status).toBe(200);
 	});
@@ -151,7 +160,7 @@ describe("Testing Response API ends", function () {
 
 		const response = await supertest(app)
 			.post('/response/5ea9e757faa9730011f8d737')
-			.send(JSON.stringify(data));
+			.send(data);
 
 		expect(response.status).toBe(200);
 	});
