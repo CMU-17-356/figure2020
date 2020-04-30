@@ -8,9 +8,9 @@
   },
   "scripts": {
     "start": "node index.js",
-    "jest-test": "jest --passWithNoTests",
+    "jest-test": "jest --passWithNoTests --forceExit",
     "extension-test": "npx mocha extension_test.js",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests --forceExit"
   },
   "repository": {
     "type": "git",
