@@ -8,9 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 var name = localStorage.getItem('name') || "friend"
-var age = localStorage.getItem('age') || null
-var gender = localStorage.getItem('gender') || null
-var ethnicity = localStorage.getItem('ethnicity') || null
+var age = localStorage.getItem('age') || ""
+var gender = localStorage.getItem('gender') || ""
+var ethnicity = localStorage.getItem('ethnicity') || ""
 
 
 class App extends Component {
