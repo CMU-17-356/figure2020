@@ -28,6 +28,7 @@ describe('User Login Test', () => {
 
     afterEach(async () => {
         await page.waitFor(500)
+        browser.close();
     })
 
     test('User cannot login with incorrect password', async () => {
@@ -39,7 +40,6 @@ describe('User Login Test', () => {
         await page.waitForFunction(
             'document.querySelector("body").innerText.includes("Incorrect password.")'
         );
-        browser.close();
     }, 30000);
 
     test('Check for correct password', async () => {
@@ -50,7 +50,6 @@ describe('User Login Test', () => {
         await page.waitForFunction(
             'document.querySelector("body").innerText.includes("Total Questions")'
         );
-        browser.close();
     }, 30000);
 
 });

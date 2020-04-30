@@ -26,6 +26,7 @@ describe('Create Question Test', () => {
 
     afterEach(async () => {
         await page.waitFor(500)
+        await browser.close()
     })
 
 
@@ -35,17 +36,24 @@ describe('Create Question Test', () => {
         const { getByText } = render(<Create />);
         const textElement = getByText(/New Question/i);
         expect(textElement).toBeInTheDocument;
-        browser.close();
     }, 30000);
 
     test('User creates a question', async () => {
         await page.goto('http://104.42.96.156/create');
-        await page.click('input[name=question]');
-        await page.type('input[name=question]', 'What is your favorite meal?');
+        await page.click('input[name=""]');
+        await page.type('input[name=""]', 'What is your favorite meal?');
         await page.click('input[name=response]');
         await page.type('input[name=response]', 'Breakfast');
+        await page.click('input[name=response]');
+        await page.type('input[name=response]', 'Lunch');
+        await page.click('input[name=response]');
+        await page.type('input[name=response]', 'Dinner');
         await page.click('#submit-button');
-        await browser.close();
+
+        page.on("dialog", (dialog) => {
+            console.log("dialog");
+            dialog.accept();
+        });
     }, 30000);
 
 });
