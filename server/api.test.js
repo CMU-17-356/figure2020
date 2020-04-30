@@ -67,17 +67,6 @@ describe("Testing Question API ends", function () {
 		});
 	});
 
-	console.log(data);
-
-	// it('post /question', function (done) {
-  //   supertest(app)
-  //     .post('/question')
-  //     .send(data)
-  //     .set('Accept', 'application/json')
-  //     .expect('Content-Type', /json/)
-  //     .expect(201);
-  // });
-
 	it('post /question', async () => {
 
 		const response = await supertest(app)
@@ -146,15 +135,6 @@ describe("Testing Response API ends", function () {
     "age": "20-30",
 		"race": "asian",
   }
-
-	// it('post /response/:id', function (done) {
-  //   supertest(app)
-  //     .post('/response/5ea9e757faa9730011f8d737')
-  //     .send(data)
-  //     .set('Accept', 'application/json')
-  //     .expect('Content-Type', /json/)
-  //     .expect(201);
-  // });
 
 	it('post /response/:id', async () => {
 
