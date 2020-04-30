@@ -120,7 +120,6 @@ app.post("/question", async (req,res) => {
 		res.send(question);
 	} catch (err) {
 		res.status(500).send(err);
-		console.log(err);
 	}
 });
 
