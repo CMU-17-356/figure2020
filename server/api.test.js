@@ -67,14 +67,14 @@ describe("Testing Question API ends", function () {
 		});
 	});
 
-	it('post /question', async () => {
+	it('post /question', async (done) => {
 
 		const response = await supertest(app)
 			.post('/question')
 			.send(data);
 
 		expect(response.status).toBe(200);
-		console.log(response.status);
+		done();
 	});
 });
 
@@ -137,12 +137,13 @@ describe("Testing Response API ends", function () {
 		"race": "asian",
   }
 
-	it('post /response/:id', async () => {
+	it('post /response/:id', async (done) => {
 
 		const response = await supertest(app)
 			.post('/response/5ea9e757faa9730011f8d737')
 			.send(data);
 
 		expect(response.status).toBe(200);
+		done();
 	});
 });
