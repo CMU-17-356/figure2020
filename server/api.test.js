@@ -6,6 +6,7 @@ const app = require('../server');
 /************************/
 
 describe("Testing Question API ends", function () {
+	jest.setTimeout(10000);
 	/*
 	 * Getting all questions should returns a proper response
 	 */
@@ -50,16 +51,16 @@ describe("Testing Question API ends", function () {
           .expect(200, done);
   });
 
-	// /*
-	//  * Posting a question should return a proper response
-	//  */
-	// let data = {
-  //   "choices": [{body: "Apple"}, {body: "Banana"}, {body: "Tomato"}, {body: "Other"}],
-  //   "body": "What is your favorite fruit?",
-	// 	"date_asked": '2020-04-29T05:07:34.911Z'
-  // }
-	//
-  // it('post /question', function (done) {
+	/*
+	 * Posting a question should return a proper response
+	 */
+	let data = {
+		"body": "What is your favorite fruit?",
+    "choices": [{choice: "Apple"}, {choice: "Banana"}, {choice: "Tomato"}, {choice: "Other"}],
+		"date_asked": new Date().toJSON(),
+  }
+
+	// it('post /question', function (done) {
   //   supertest(app)
   //     .post('/question')
   //     .send(data)
@@ -67,6 +68,15 @@ describe("Testing Question API ends", function () {
   //     .expect('Content-Type', /json/)
   //     .expect(201);
   // });
+
+	it('post /question', async () => {
+
+		const response = await supertest(app)
+			.post('/question')
+			.send(JSON.stringify(data));
+
+		expect(response.status).toBe(200);
+	});
 });
 
 
@@ -118,4 +128,31 @@ describe("Testing Response API ends", function () {
           .expect('Content-Type', /json/)
           .expect(500, done);
   });
+
+	/*
+	 * Posting a question should return a proper response
+	 */
+	let data = {
+    "gender": "female",
+    "age": "20-30",
+		"race": "asian",
+  }
+
+	// it('post /response/:id', function (done) {
+  //   supertest(app)
+  //     .post('/response/5ea9e757faa9730011f8d737')
+  //     .send(data)
+  //     .set('Accept', 'application/json')
+  //     .expect('Content-Type', /json/)
+  //     .expect(201);
+  // });
+
+	it('post /response/:id', async () => {
+
+		const response = await supertest(app)
+			.post('/response/5ea9e757faa9730011f8d737')
+			.send(JSON.stringify(data));
+
+		expect(response.status).toBe(200);
+	});
 });
