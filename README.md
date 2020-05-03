@@ -13,7 +13,7 @@ To start up the application locally, first run `npm install` then `npm start` wi
 To start up the chrome extension locally, first run `npm install -g create_react_app`, `npm install`, `npm start`. Afterwards, the application should be running locally at http://localhost:3000/
 
 ### Local Testing
-To run tests locally first run `npm install` then `npm test` within the server directory.
+To run tests locally first run `npm install` then `npm test` within the server directory.  
 To run end-to-end test for Chrome extension first run `npm install` then `npx mocha extension_test.js` within the server directory
 
 ### QA Tools List
