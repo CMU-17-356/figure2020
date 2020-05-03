@@ -14,6 +14,7 @@ To start up the chrome extension locally, first run `npm install -g create_react
 
 ### Local Testing
 To run tests locally first run `npm install` then `npm test` within the server directory.
+To run end-to-end test for Chrome extension first run `npm install` then `npx mocha extension_test.js` within the server directory
 
 ### QA Tools List
 * Continuous Integration: [Travis-CI](https://travis-ci.com/github/dkim1546/figure2020)
