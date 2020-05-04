@@ -78,6 +78,7 @@ export class Ask extends Component {
     return (
       <div>
         <button id="settings" onClick={this.props.settingsPage}><img src={settings} width="40px" height="40px"/></button>
+        <button id="linkresponses" onClick={() => this.showAllResponsePage()}><img src={charts} width="35px" height="35px"/></button> 
         <div id="contain">
           <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center"}}>
             Hello, {this.props.name}! <br></br>

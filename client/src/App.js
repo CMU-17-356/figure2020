@@ -69,6 +69,7 @@ const App = () => {
 								(<Navbar.Collapse className="justify-content-end">
 									<Navbar.Text>
 										<a href="/"><img src={question} width="40px" height="40px" alt=""/></a>
+										<a href="/login"><img src={person} width="50px" height="50px" alt=""/></a>
 									</Navbar.Text>
 								</Navbar.Collapse>)
 							}
