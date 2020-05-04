@@ -79,7 +79,7 @@ const App = () => {
 					}
 					<Route path="/" exact strict render={questionsPage}/>
 					<Route path="/login" exact strict render={signupLogin}/>
-					<Route path="/response" exact strict render={responsePage}/>
+					<Route path="/getresponse/:id" exact strict render={responsePage}/>
 				</div>
 			</Router>
 		</div>

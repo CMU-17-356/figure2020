@@ -4,8 +4,11 @@ import '../../App.css';
 import './response.css';
 import {Bar} from 'react-chartjs-2';
 import settings from '../../settings.png';
+import charts from '../../charts.png';
 import axios from 'axios';
-
+import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 /*************************/
 /*  Class Implementation */
@@ -37,10 +40,17 @@ export class Response extends Component {
       })
     };
 
+    showAllResponsePage = () => {
+      const currentId = localStorage.getItem('currId');
+      const link = "http://104.42.96.156/getresponse/" + currentId
+      window.open(link, "_blank")
+    }
+
   render() {
     return (
       <div>
         <button id="settings" onClick={this.props.settingsPage}><img src={settings} width="40px" height="40px"/></button>
+         <button id="linkresponses" onClick={() => this.showAllResponsePage()}><img src={charts} width="35px" height="35px"/></button>
       <div id="containResponse" >
         <div style={{"font-size": "50px", "font-weight": "900px", "text-shadow": "3px 3px #D3D3D3", display: "flex", "flexDirection": "row", "justifyContent": "center"}}>
           Hello, {this.props.name}! <br></br>

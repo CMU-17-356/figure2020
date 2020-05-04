@@ -10,14 +10,8 @@ import {Link} from "react-router-dom";
 export class Response extends Component {
   constructor(props) {
     super(props);
-    if (typeof this.props.location.state === 'undefined') {
-      this.state = {
-        question: null,
-        choices: null,
-        counts: null
-      }
-    } else {
-      let redirectionId = this.props.location.state.redirectId;
+    if (this.props.match.params.id !== "undefined") {
+      let redirectionId = this.props.match.params.id;
       this.state = {
         questionId: redirectionId,
         question: null,
@@ -46,10 +40,11 @@ export class Response extends Component {
         race_other: [],
         race_unknown: []
       };
-    }
+    } 
   }
 
   componentDidMount() {
+    console.log(this.state.redirectionId)
     axios.get('/question/' + this.state.questionId)
       .then(res => {
         const question = res.data;

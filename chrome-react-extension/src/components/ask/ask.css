@@ -44,3 +44,16 @@ button:focus { outline:0 !important; }
 #settings:hover {
   opacity: 1;
 }
+
+#linkresponses {
+  background-color: transparent;
+  border-color: transparent;
+  position: fixed;
+  margin-top: 10px;
+  right: 30px;
+  opacity: .6;
+}
+
+#linkresponses:hover {
+  opacity: 1;
+}
