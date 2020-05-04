@@ -4,6 +4,8 @@ import './ask.css';
 import '../../App.css';
 import settings from '../../settings.png';
 import axios from 'axios';
+import charts from '../../charts.png';
+
 
 export class Ask extends Component {
   constructor(props) {

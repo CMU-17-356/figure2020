@@ -40,7 +40,7 @@ export class Settings extends Component {
             <br/><br/>
             Age <br/>
             <select defaultValue={this.state.age} name="age" onChange={this.handleChange}>
-                <option value=""></option>
+                <option value="">Choose not to disclose</option>
                 <option value="<10">10 or younger</option>
                 <option value="10-20">10-20</option>
                 <option value="20-30">20-30</option>
@@ -52,7 +52,7 @@ export class Settings extends Component {
             <br></br><br></br>
             Gender <br/>
             <select defaultValue={this.state.gender} name="gender" onChange={this.handleChange}>
-                <option value=""></option>
+                <option value="">Choose not to disclose</option>
                 <option value="female">Female</option>
                 <option value="male">Male</option>
                 <option value="nonbinary">Non-binary</option>
@@ -61,7 +61,7 @@ export class Settings extends Component {
             <br></br><br></br>
             Race <br/>
             <select defaultValue={this.state.ethnicity} name="ethnicity" onChange={this.handleChange}>
-                <option value=""></option>
+                <option value="">Choose not to disclose</option>
                 <option value="white">White</option>
                 <option value="hispanic">Hispanic</option>
                 <option value="african american">African American</option>
