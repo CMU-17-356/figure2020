@@ -22,3 +22,9 @@ To run end-to-end test for Chrome extension first run `npm install` then `npx mo
 * Linter: [eslint](https://eslint.org/docs/user-guide/getting-started)
 * Dependency Updater: [npm-check](https://www.npmjs.com/package/npm-check)
 * Test Frameworks: [Jest](https://jestjs.io/) and [Puppeteer](https://github.com/puppeteer/puppeteer)
+
+### Additional Documentations
+Team folder: https://drive.google.com/drive/folders/1ImRQ-P_UORvqA0S_N3F8p9l4lFU0n3Q1?usp=sharing  
+Final documentation: https://docs.google.com/document/d/1BhFQ_3ve64AW9xa9jmi7h2etGjHc59GVg21eDq0zZzs/edit?usp=sharing
+
+
