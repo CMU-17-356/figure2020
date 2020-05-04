@@ -48,12 +48,10 @@ export class SignupLogin extends Component {
                   Password: <br/>
                   <input type="password" name="password" autoComplete="password" value={this.state.password} onChange={this.handleChange}/>
                   <br/><br/>
-
                   <Button id="loginButton" variant="outline-dark" size="lg" onClick={this.login}>Submit</Button>
-
                 </form><br/><Button variant="outline-dark" size="lg"><a href="/">Return To Menu</a></Button>
               </div>): (<div>
-                <Button id="logoutbutton" variant="outline-dark" size="lg" onClick={this.logout}>Logout</Button> </div>)}
+              <Button id="logoutbutton" variant="outline-dark" size="lg" onClick={this.logout}>Logout</Button> </div>)}
           </Card.Body>
         </Card>
       </div>

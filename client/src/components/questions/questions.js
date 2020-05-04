@@ -41,20 +41,17 @@ export class Questions extends Component {
     const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? '' : ''].join(' ').trim();
     return (
       <div id="contain">
-          <div className="w-100 flex-row flex-wrap align-items-center">
-            <div className="flex-row align-items-center">
-              <h2 className={headerClass}>
-                <strong>{totalQuestions}</strong> Total {totalQuestions === 1 ? "Question" : "Questions"}
-              </h2>
-              {
-                currentPage && (
-                  <span className="">
-                  Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
-                </span>
-                )
-              }
-            </div>
+        <div className="w-100 flex-row flex-wrap align-items-center">
+          <div className="flex-row align-items-center">
+            <h2 className={headerClass}>
+              <strong>{totalQuestions}</strong> Total {totalQuestions === 1 ? "Question" : "Questions"}
+            </h2>
+            {currentPage && (
+              <span className="">
+                Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
+              </span>)}
           </div>
+        </div>
         <br></br>
         <div id="questions">
           { currentQuestions.map(question => <QuestionCard question={question} />) }
