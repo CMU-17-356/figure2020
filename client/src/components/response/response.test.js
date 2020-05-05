@@ -37,8 +37,7 @@ describe('Check User result viewing', () => {
         await page.waitForFunction(
             'document.querySelector("body").innerText.includes("How many hours did you sleep last night?")'
         );
-        var cardElemsWait = document.getElementsByClassName("cards")[0].click()
-        var cardElems = await cardElemsWait
+        await page.click(".cards")[0];
         await page.waitForFunction(
             'document.querySelector("body").innerText.includes("View response by")'
         );
