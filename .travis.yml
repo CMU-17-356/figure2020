@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - "8"
-dist: xenial  
+  - "14"
+dist: xenial
 sudo: required
 services:
   - docker
-  
+
 env:
   global:
     - DOCKER_TLS_VERIFY="1"
